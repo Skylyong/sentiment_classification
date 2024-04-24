@@ -1,0 +1,39 @@
+{
+    "configurations": [
+
+
+
+
+{
+  "name": "train",
+  "type": "python",
+  "request": "launch",
+  "module": "accelerate.commands.launch",
+  "args": [
+    
+  //  "--mixed_precision","fp16",
+  //  "--dynamo_backend", "eager",
+    "src/model_building/train.py",
+    
+    ], // other args comes after train.py
+  "console": "integratedTerminal",
+   "env": {"CUDA_VISIBLE_DEVICES": "6,7"}
+},
+
+
+{
+ // 添加一个常规配置
+"name":"train without accelerate",
+"type":"python",
+"request":"launch",
+"program":"${workspaceFolder}/src/model_building/train.py",
+"console":"integratedTerminal",
+"env": {"CUDA_VISIBLE_DEVICES": "6"}
+},
+
+}
+
+
+    ]
+}
+
