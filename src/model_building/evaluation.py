@@ -6,7 +6,7 @@ import os
 import sys
 from sklearn.metrics import roc_curve, auc
 from tqdm import tqdm
-from constant import MIMIC_2_DIR, MIMIC_3_DIR
+# from constant import MIMIC_2_DIR, MIMIC_3_DIR
 
 
 def all_metrics(y, yhat_raw, k=[5, 8, 15], calc_auc=True, threshold=0.0):

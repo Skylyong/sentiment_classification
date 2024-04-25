@@ -5,3 +5,4 @@ gpt2/*
 cache/*
 .conda/*
 pretrained_models/*
+predict_results.xlsx

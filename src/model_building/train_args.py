@@ -9,16 +9,55 @@ LABEL_SET = [
     'Proud'
 ]
 
+LABELS_MAP = {
+'pleased':'comfort',
+'proud':'confident',
+'interested':'interest',
+'confidence':'confident',
+'interested':'interest',
+'enthusiasm':'enthusiastic',
+'curious':'curiosity',
+'entusiastic':'enthusiastic',
+'excitement':'excited',
+'intrigued':'interest',
+'nostalgia' :'calm',
+'nostalgic':'comfort'
+
+}
+DROP_LABELS = []
+
+def new_label_set():
+    res = []
+    for label in LABEL_SET:
+        label = label.lower()
+        if label in LABELS_MAP:
+            label = LABELS_MAP[label]
+        if label not in DROP_LABELS:
+            res.append(label)
+    res = list(set(res))
+    
+    return sorted(res)
+
+
+LABEL_SET = new_label_set()
+
+if len(LABEL_SET) != 15:
+    print(len(LABEL_SET))
+    for label in LABEL_SET:
+        print(label)
+
+assert len(LABEL_SET) == 15
+
 def parse_args():
     parser = argparse.ArgumentParser(description='Train a model')
     
-    parser.add_argument('--data_path', type=str, default='./DATA_SET/data_processed.npy', help='Path to the data')
+    parser.add_argument('--data_path', type=str, default='./DATA_SET/data_processed_normalized.npy', help='Path to the data')
     parser.add_argument('--model_path', type=str, default='models/', help='Path to save the model')
     # parser.add_argument('--model_name', type=str, default='model', help='Name of the model')
     
     parser.add_argument('--bert_model_path', type=str, default='internlm/internlm2-7b', choices=['internlm/internlm2-7b','hfl/chinese-bert-wwm', 'bert-base-uncased'],help='Path to the bert model')
     parser.add_argument('--emotion2vec_model_path', type=str, default='None', help='Path to the emotion2vec model')
-    parser.add_argument('--num_classes', type=int, default=17, help='Number of classes')
+    parser.add_argument('--num_classes', type=int, default=len(LABEL_SET), help='Number of classes')
     
     parser.add_argument('--lr', type=float, default=1e-5, help='Learning rate')
     parser.add_argument('--train_batch_size', type=int, default=1, help='Batch size for training')
@@ -46,6 +85,26 @@ def parse_args():
     parser.add_argument('--fusion_pooling_type', type=str, default='max', choices=['mean', 'max'], help='Fusion pooling type')
      
     parser.add_argument('--num_workers', type=int, default=32, help='Number of workers')
+   
+   
+    parser.add_argument('--emotion_map_dict', type=dict, default={
+        'Comfort':0,
+        'Interest':0,
+        'Insight':0,
+        'Satisfied':0,
+        'Calm':0,
+        'Hopeful':0.5,
+        'Curiosity':0.5,
+        'Enlightenment':0.5,
+        'Thrilled':0.5,
+        'Anticipatory':0.5,
+        "Confident":1,
+        "Intrigue":1,
+        "Epiphany":1,
+        "Enthusiastic":1,
+        "Excited":1
+        
+        }, help='map emotion class to scores')
     
     args = parser.parse_args()
     return args

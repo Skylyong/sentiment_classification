@@ -4,6 +4,7 @@
 
 
 
+
 {
   "name": "train",
   "type": "python",
@@ -30,6 +31,14 @@
 "console":"integratedTerminal",
 "env": {"CUDA_VISIBLE_DEVICES": "6"}
 },
+{
+
+"name":"predict",
+"type":"python",
+"request":"launch",
+"program":"${workspaceFolder}/src/model_building/predict.py",
+"console":"integratedTerminal",
+"env": {"CUDA_VISIBLE_DEVICES": "6"}
 
 }
 

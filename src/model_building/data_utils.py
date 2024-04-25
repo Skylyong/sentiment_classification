@@ -5,7 +5,8 @@ import numpy as np
 import json
 import tqdm
 import os
-
+from train_args import parse_args
+from transformers import BertTokenizer, AutoTokenizer
 
 class CustomDataset(Dataset):
     def __init__(self, data: json, args: Any, tokenizer: Any,  version: str = None):
@@ -14,11 +15,13 @@ class CustomDataset(Dataset):
         self.tokenizer = tokenizer
         label_set = args.label_set
         assert len(set(label_set)) == len(label_set), 'label_set should not contain duplicate labels'
-        self.label_set = sorted(label_set)
-        self.labels_not_in_label_set = []
+        self.label_set = label_set
+        self.label_to_idx = {label: idx for idx, label in enumerate(label_set)}
+        self.idx_to_label = {idx: label for idx, label in enumerate(label_set)}
+        # self.labels_not_in_label_set = []
         # self.labels, self.texts, self.audio_embeddings = self.get_labels_texts_audio_embeddings(version)
 
-        print(f'Labels not in label_set: {self.labels_not_in_label_set}')
+        # print(f'Labels not in label_set: {self.labels_not_in_label_set}')
     
     def padding_audio_embedding(self, audio_embedding, max_audio_length):
         padded_type = np.zeros(max_audio_length)
@@ -71,17 +74,19 @@ class CustomDataset(Dataset):
         
     def encode_label(self, labels):              
        # 判断是否所有的labels都在label_set里面
-        for label in labels:
-            if label not in self.label_set:
-                if label not in self.labels_not_in_label_set:
-                    self.labels_not_in_label_set.append(label)
+        # for label in labels:
+        #     label = label.lower()
+        #     if label not in self.label_set:
+        #             self.labels_not_in_label_set.append(label)
+        #             print(label)
             # assert label in self.label_set, f'{label} not in label_set'
         
         # labels里面包含多个label，如果是多个label，那么就返回多个label的one-hot编码
         label_encoding = np.zeros(len(self.label_set))
         for label in labels:
-            if label in self.label_set: # TODO it's a temp solution
-                label_encoding[self.label_set.index(label)] = 1
+            label = label.lower()
+            assert label in self.label_set, f'{label} not in label_set'
+            label_encoding[self.label_set.index(label)] = 1
         return label_encoding
                    
     def __len__(self):
@@ -160,3 +165,39 @@ def my_collate_fn(batch):
     labels = torch.stack(labels)
         
     return {'text': texts, 'audio_embedding': audios_embedding, 'audio_padded_type':audios_type, 'label': labels}
+
+
+if __name__ == '__main__':
+    # import sys
+    # sys.insert(0, 'src')
+    
+    args = parse_args()
+    data = np.load(args.data_path, allow_pickle=True).item()
+    
+    if 'intern' in args.bert_model_path:
+        tokenizer = AutoTokenizer.from_pretrained(args.bert_model_path,
+                                                    cache_dir=args.pretrained_models_dir,
+                                                    trust_remote_code=True,
+                                                  )
+    else:
+        tokenizer = BertTokenizer.from_pretrained(args.bert_model_path, 
+                                                  cache_dir=args.pretrained_models_dir,
+                                                  ) 
+    
+    train = CustomDataset(data['train'], args, tokenizer, version='train')
+    val = CustomDataset(data['val'], args, tokenizer, version='val')
+    test = CustomDataset(data['test'], args, tokenizer, version='test')
+    
+    # 查看train里面的所有数据
+    # print(len(train))
+    for i in range(len(train)):
+        # print(train[i])
+        train[i]
+    # print(train.labels_not_in_label_set)
+    
+    for i in range(len(val)):
+        val[i]
+    for i in range(len(test)):
+        test[i]
+    
+    
