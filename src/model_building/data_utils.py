@@ -73,7 +73,6 @@ class CustomDataset(Dataset):
         
         
     def encode_label(self, labels):              
-       # 判断是否所有的labels都在label_set里面
         # for label in labels:
         #     label = label.lower()
         #     if label not in self.label_set:
@@ -81,7 +80,6 @@ class CustomDataset(Dataset):
         #             print(label)
             # assert label in self.label_set, f'{label} not in label_set'
         
-        # labels里面包含多个label，如果是多个label，那么就返回多个label的one-hot编码
         label_encoding = np.zeros(len(self.label_set))
         for label in labels:
             label = label.lower()
