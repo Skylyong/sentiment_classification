@@ -11,7 +11,7 @@ from accelerate import DistributedDataParallelKwargs, Accelerator
 from tqdm import tqdm
 
 # set use cuda:7 and cuda:8
-# os.environ['CUDA_VISIBLE_DEVICES'] = '6'
+# os.environ['CUDA_VISIBLE_DEVICES'] = '6 7'
 
 # for debug
 
@@ -146,8 +146,8 @@ def main():
     
     args = parse_args()
     
-    if 'intern' in args.bert_model_path:
-        args.text_embedding_dim = 4096
+    # if 'intern' in args.bert_model_path:
+    #     args.text_embedding_dim = 4096
     
     # device = torch.device(args.device if torch.cuda.is_available() and 'cuda' in  args.device else 'cpu')
     # print(device)

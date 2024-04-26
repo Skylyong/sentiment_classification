@@ -1,4 +1,12 @@
-# gpt标注的label和我们在label set中定义的label不完全一致，这里将它们对齐
+'''
+@Author: leon
+@Date: 2024年04月25日
+@Description:
+    gpt标注的label和我们在label set中定义的label不完全一致, 这里将它们对齐, 让数据的标签都在定义的标签集中
+    
+
+'''
+
 
 import sys
 sys.path.append('./src')
@@ -32,18 +40,8 @@ def normalize_label(datas):
             new_label = list(set(new_label))
             d['label'] = new_label
     
-    # save the normalized data
+
     np.save('./DATA_SET/data_processed_normalized.npy', datas)
     
-    
-    
-    # unique_label_not_in = list(set(label_not_in))
-    # print(f'unique_label_not_in: {unique_label_not_in}')
-    
-    # print(data[0]['label'])
-
-
-# for key in ['train', 'val', 'test']:
-#     normalize_label(data[key])
 
 normalize_label(data)

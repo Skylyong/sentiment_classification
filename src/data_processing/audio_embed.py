@@ -1,4 +1,4 @@
-from funasr import AutoModel
+from src.funasr import AutoModel
 import os
 import time
 import glob

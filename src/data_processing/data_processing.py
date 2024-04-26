@@ -1,5 +1,52 @@
+'''
+@Author: leon
+@Date: 2024年04月15日17:35:45
+@Description:
+    将中文命名的文件名改为英文命名的文件名，并将文本文件和音频文件对应上, 将word格式的文档转换为txt格式的文档
+    输入：
+        存储到本地xxx路径下面的音频文件和文本文件，路径的组织方式为：
+        - audio
+            - category1
+                - file1.mp3
+                - file2.mp3
+                - ...
+            - category2
+                - file1.mp3
+                - file2.mp3
+                - ...
+            - ...
+        - txt_docments
+            - category1
+                - file1.docx
+                - file2.docx
+                - ...
+            - category2
+                - file1.docx
+                - file2.docx
+                - ...
+            - ...
+    输出：
+        将文本文件和音频文件对应上，将对应上的文件存储到processed_data.json文件中，将没有对应上的文件存储到not_in.txt文件中
+        
+        processed_data.json文件的格式为：
+        [
+            {
+                'text': 'xxx', 
+                'audio_file': 'xxx',
+                'category': 'xxx',
+                'idx': 0
+            },
+            ...
+        ]
+'''
+
+
+
 import glob
 import os
+from docx import Document
+import json
+import jieba
 
 # 获取文件夹下面的所有文件
 
@@ -34,8 +81,7 @@ def rename():
                 os.rename(file, sub_dir + new_file_name)
 
 
-from docx import Document
-import json
+
 
 
 
@@ -68,7 +114,7 @@ def word2txt():
 # word2txt()
 
 # 统计'/root/autodl-tmp/xianyu/sentiment_classification/data/txt_docments'下面的所有文件的数量，以及文件中的字符数量
-import jieba
+
 
 def count_file():
     sum_ = 0
@@ -163,46 +209,3 @@ def check_audio_text():
 # check_audio_text()
 
 # mp3 and aac to wav
-import subprocess
-
-def mp3_and_aac_to_wav():
-    audio_path = '/root/autodl-tmp/xianyu/sentiment_classification/data/audio'
-    for file in glob.glob(audio_path + '/*/*.*'):
-        if 'mp3' in file or 'aac' in file:
-            print(file)
-            file_name = file.split('/')[-1]
-            new_file_name = file_name.replace('.mp3', '.wav').replace('.aac', '.wav')
-            new_file = file.replace(file_name, new_file_name)
-            print(new_file)
-            subprocess.run(['ffmpeg', '-i', file, new_file])
-            # os.remove(file)
-        else:
-            print('no need to convert', file)
-
-# mp3_and_aac_to_wav()
-
-def view_audio():
-    audio_path = '/root/autodl-tmp/xianyu/sentiment_classification/test.wav'
-    # 查看音频采样率
-    subprocess.run(['ffprobe', '-i', audio_path])
-    
-    audio_path = '/root/autodl-tmp/xianyu/sentiment_classification/data/audio/skin_care/D7-63.MP3'
-    print('\n\n\n')
-    subprocess.run(['ffprobe', '-i', audio_path])
-    
-    # 将audio_path转换为wav格式, 并且设置采样率为16000
-    new_audio_path = audio_path.replace('.MP3', '.wav')
-    subprocess.run(['ffmpeg', '-i', audio_path, '-ar', '16000', new_audio_path])
-    print('\n\n\n')
-    subprocess.run(['ffprobe', '-i', new_audio_path])
-    
-    # 查看new_audio_path和audio_path占用的空间
-    print('\n\n\n')
-    subprocess.run(['du', '-h', audio_path])
-    print('\n\n\n')
-    subprocess.run(['du', '-h', new_audio_path])
-    
-    # 截断new_audio_path, 只取前面10min
-    new_audio_path_ = new_audio_path.replace('.wav', '_50min.wav')
-    subprocess.run(['ffmpeg', '-i', new_audio_path, '-t', '00:05:00', new_audio_path_])
-view_audio()
