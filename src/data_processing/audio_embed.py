@@ -1,4 +1,4 @@
-from src.funasr import AutoModel
+
 import os
 import time
 import glob
@@ -9,10 +9,10 @@ import torch
 
 
 
-model =AutoModel(model="iic/emotion2vec_base_finetuned")
+# model =AutoModel(model="iic/emotion2vec_base_finetuned")
 
 
-def get_audio_to_embed(mp3_file):
+def get_audio_to_embed(mp3_file, model=None):
     try:
         res = model.generate(mp3_file, output_dir=None, granularity="utterance", extract_embedding=True)
         dir_ = {

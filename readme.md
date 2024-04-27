@@ -56,7 +56,6 @@
                 'category': 'xxx',
                 'total_idx': int,
                 'name': 'xxx',
-                'category_idx': int
             },
             ...
         ]
