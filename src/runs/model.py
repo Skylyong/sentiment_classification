@@ -20,6 +20,10 @@ from peft import LoraConfig, get_peft_model,TaskType
  
 
 
+class congigClass:
+    def __init__(self, hidden_size ):
+        self.hidden_size = hidden_size
+        
 class text_embedding_with_bert(nn.Module):
     def __init__(self, bert_model_path, pretrained_models_dir, text_embedding_dim, max_length=6000):
         super(text_embedding_with_bert, self).__init__()
@@ -53,7 +57,7 @@ class text_embedding_with_bert(nn.Module):
             #     param.requires_grad = False
             
             peft_config = LoraConfig(
-                 r=16,
+                 r=64,
                 target_modules=["wo", "wqkv"],
                 task_type=TaskType.CAUSAL_LM,
                 lora_alpha=32,
@@ -65,6 +69,8 @@ class text_embedding_with_bert(nn.Module):
             )
             model = get_peft_model(inter_model, peft_config)
             model.print_trainable_parameters()
+            self.model = model
+            
             self.model = model
              
         else:
@@ -79,7 +85,11 @@ class text_embedding_with_bert(nn.Module):
         if 'intern' in self.model_path:
             # with torch.no_grad():
             outputs =  self.model(input_ids=text['input_ids'], attention_mask=text['attention_mask'])
-            return outputs.hidden_states[-1]
+            outputs = outputs.hidden_states[-1] 
+            # 判断outputs是否有nan
+            # if torch.isnan(outputs).sum() > 0:
+            #     print('outputs has nan')
+            return outputs
         else: 
             outputs = self.model(**text)
             return outputs.last_hidden_state
@@ -113,15 +123,18 @@ class feature_fusion(nn.Module):
         
         
     def forward(self, text_embedding, audio_embedding, audio_mask):
+        
+        seg_length = text_embedding.shape[1]
         text_embedding = text_embedding.view(-1, self.args.text_embedding_dim)
+        
         
         text_embedding = self.fc(text_embedding)
         
-        text_embedding = text_embedding.view(-1, self.args.max_length, self.args.audio_embedding_dim)
+        text_embedding = text_embedding.view(-1, seg_length , self.args.audio_embedding_dim)
         audio_mask = 1 - audio_mask
         
-        # audio_mask shape: [batch_size, 53] - > [batch_size, 100, 53]
-        audio_mask = audio_mask.unsqueeze(1).expand(-1, self.args.max_length, -1)
+        # audio_mask shape: [batch_size, 53] - > [batch_size, 40, 53]
+        audio_mask = audio_mask.unsqueeze(1).expand(-1, seg_length, -1)
                 
         fusion_embedding, _ = self.att(text_embedding, audio_embedding, audio_embedding, attn_mask = audio_mask)
         
@@ -139,8 +152,9 @@ class feature_fusion(nn.Module):
  
 
 class text_audio_sentiment_classify(nn.Module):
-    def __init__(self, args):
+    def __init__(self, args, device):
         super(text_audio_sentiment_classify, self).__init__()
+        self.config = congigClass(args.text_embedding_dim)
         self.args = args
         self.text_model = text_embedding_with_bert(args.bert_model_path, 
                                                    args.pretrained_models_dir,
@@ -149,6 +163,7 @@ class text_audio_sentiment_classify(nn.Module):
         self.audio_model = audio_embedding_with_emotion2vec(args.emotion2vec_model_path)
         self.fusion = feature_fusion(args)
         self.fc = nn.Linear(args.audio_embedding_dim, args.num_classes)
+        self.device = device
         
     def forward(self, text, audio):
         
@@ -156,7 +171,32 @@ class text_audio_sentiment_classify(nn.Module):
         for key in text_keys:
             text[key] = text[key].view(-1, self.args.max_length) 
         
-        text_embedding = self.text_model(text)
+        
+       
+        num_segment = text['input_ids'].shape[1] // self.args.max_seg_text_length
+        if num_segment > 1:
+            text_embedding = []
+            for i in range(num_segment):
+                text_ = {key: value[:, i*self.args.max_seg_text_length: (i+1)*self.args.max_seg_text_length] for key, value in text.items()}
+                if torch.sum(text_['attention_mask']) == 0:
+                    break
+                
+                text_ = {key: value.to(self.device) for key, value in text_.items()}
+                
+                text_embedding_ = self.text_model(text_)
+                
+                # 把text_embedding_的维度从放到cpu中
+                # text_embedding_ = text_embedding_.cpu()
+                
+                text_embedding.append(text_embedding_)
+                
+            text_embedding = torch.stack(text_embedding)
+            text_embedding = torch.mean(text_embedding, dim=2) 
+            text_embedding = text_embedding.permute(1, 0, 2)
+        else:
+            
+         
+            text_embedding = self.text_model(text)
         
         audio_embedding, audio_mask = self.audio_model(audio)
        

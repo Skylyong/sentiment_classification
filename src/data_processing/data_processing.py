@@ -91,13 +91,12 @@ DATA_DIR = '/data/User_Hannah/new_data'
 
 
 class data_process:
-    def __init__(self, category = ['dress', 
-                                   'food',
-                                      'skin_care',
-                                        'make_up'
-                                   ]) -> None:
-        self.category = category
+    def __init__(self, category = None) -> None:
+        self.category = category if category else self.get_category()
         self.audio_model =AutoModel(model="iic/emotion2vec_base_finetuned")
+    
+    def get_category(self, ):
+        return os.listdir(DATA_DIR + '/audio')
 
     def convert_docx_to_text(self, docx:Document):
         res_text = []
@@ -189,7 +188,7 @@ class data_process:
             # break
           
         
-        processed_data = self.split_data(processed_data)
+        # processed_data = self.split_data(processed_data)
         torch.save(processed_data, DATA_DIR + '/processed_data.pt')
         json.dump(not_in, open(DATA_DIR + '/not_find_audio.txt', 'w', encoding='utf-8'), indent=4)
         json.dump(not_get_embedding, open(DATA_DIR + '/not_get_embedding.txt', 'w', encoding='utf-8'), indent=4)
@@ -221,7 +220,10 @@ def load_data():
     print(data.keys())
     
 if __name__ == '__main__':
-    data_process().run()
+    dp = data_process()
+    # c = dp.get_category()
+    # print(c)
+    dp.run()
     print('数据处理完成！')
-    # load_data()
+    load_data()
     

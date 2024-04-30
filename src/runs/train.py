@@ -9,6 +9,8 @@ from transformers import BertTokenizer, AutoTokenizer
 from  torch.nn.parallel import DistributedDataParallel as DDP
 from accelerate import DistributedDataParallelKwargs, Accelerator
 from tqdm import tqdm
+from torch.utils.tensorboard import SummaryWriter
+
 
 # set use cuda:7 and cuda:8
 # os.environ['CUDA_VISIBLE_DEVICES'] = '6 7'
@@ -35,7 +37,7 @@ def train_one_epoch(model, dataloader, optimizer, criterion, accelerator):
         label = data['label']
        
 
-        text = {key: value.to(accelerator.device) for key, value in text.items()}
+        # text = {key: value.to(accelerator.device) for key, value in text.items()}
         audio = {key: value.to(accelerator.device) for key, value in audio.items()}
         label = label.to(accelerator.device)
         
@@ -100,7 +102,7 @@ def evaluate(model, dataloader, criterion, accelerator):
             audio = {'audio_embedding':data['audio_embedding'], 'audio_padded_type':data['audio_padded_type']}
             label = data['label']
             
-            text = {key: value.to(accelerator.device) for key, value in text.items()}
+            # text = {key: value.to(accelerator.device) for key, value in text.items()}
             audio = {key: value.to(accelerator.device) for key, value in audio.items()}
             label = label.to(accelerator.device)
 
@@ -115,7 +117,7 @@ def evaluate(model, dataloader, criterion, accelerator):
             
     return running_loss / len(dataloader)
 
-def train(model, train_dataloader, val_dataloader, optimizer, criterion, num_epochs, accelerator):
+def train(model, train_dataloader, val_dataloader, optimizer, criterion, num_epochs, accelerator, writer):
     os.makedirs('models', exist_ok=True)
     
     for epoch in range(num_epochs):
@@ -125,9 +127,12 @@ def train(model, train_dataloader, val_dataloader, optimizer, criterion, num_epo
         accelerator.wait_for_everyone()
         
         if accelerator.is_main_process:
-            print(f'Epoch {epoch+1}/{num_epochs}, Train Loss: {train_loss}')
+            # print(f'Epoch {epoch+1}/{num_epochs}, Train Loss: {train_loss}')
         
             print(f'Epoch {epoch+1}/{num_epochs}, Train Loss: {train_loss}, Val Loss: {val_loss}')
+            
+            writer.add_scalar('Loss/train', train_loss, epoch)
+            writer.add_scalar('Loss/val', val_loss, epoch)
         
             if (epoch+1) % 5 == 0:
                 torch.save(model.state_dict(), f'models/model_{epoch+1}.pth')
@@ -136,23 +141,24 @@ def train(model, train_dataloader, val_dataloader, optimizer, criterion, num_epo
         torch.save(model.state_dict(), 'models/model.pth')
 
 def main():
-    
-    kwargs_handlers = [DistributedDataParallelKwargs()]
+    writer = SummaryWriter()
+    kwargs_handlers = [DistributedDataParallelKwargs(find_unused_parameters=True)]
 
     accelerator = Accelerator(
         kwargs_handlers=kwargs_handlers,
+       
         # device_placement=False
     )
     
     args = parse_args()
     
-    # if 'intern' in args.bert_model_path:
-    #     args.text_embedding_dim = 4096
+    if 'intern' in args.bert_model_path:
+        args.text_embedding_dim = 4096
     
     # device = torch.device(args.device if torch.cuda.is_available() and 'cuda' in  args.device else 'cpu')
     # print(device)
     
-    model = text_audio_sentiment_classify(args).to(accelerator.device) .to(torch.float16).to(accelerator.device)
+    model = text_audio_sentiment_classify(args, accelerator.device).to(torch.float16).to(accelerator.device) #.to(torch.float16).to(accelerator.device)
     
     if accelerator.is_main_process:
         print('accelerator device: ', accelerator.device)
@@ -168,6 +174,7 @@ def main():
         tokenizer = AutoTokenizer.from_pretrained(args.bert_model_path,
                                                     cache_dir=args.pretrained_models_dir,
                                                     trust_remote_code=True,
+                                                     padding_side = 'right',
                                                   )
     else:
         tokenizer = BertTokenizer.from_pretrained(args.bert_model_path, 
@@ -182,9 +189,13 @@ def main():
     
     val_dataloader = DataLoader(val_data, batch_size=args.val_batch_size, shuffle=False, collate_fn=my_collate_fn, num_workers=args.num_workers)
     
-    model, train_dataloader, val_dataloader, optimizer, criterion = accelerator.prepare(model, train_dataloader, val_dataloader, optimizer, criterion)
+    model, train_dataloader, val_dataloader, optimizer = accelerator.prepare(model, train_dataloader, val_dataloader, optimizer)
     
-    train(model, train_dataloader, val_dataloader, optimizer, criterion, args.num_epochs, accelerator) 
+    train(model, train_dataloader, val_dataloader, optimizer, criterion, args.num_epochs, accelerator, writer) 
+    
+    writer.close()
     
 if __name__ == '__main__':
+   
     main()
+  

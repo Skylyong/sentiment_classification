@@ -9,16 +9,17 @@
   "name": "train",
   "type": "python",
   "request": "launch",
+  "justMyCode": false,
   "module": "accelerate.commands.launch",
   "args": [
     
-  //  "--mixed_precision","fp16",
+    "--mixed_precision","fp16",
   //  "--dynamo_backend", "eager",
-    "src/model_building/train.py",
+    "src/runs/train.py",
     
     ], // other args comes after train.py
   "console": "integratedTerminal",
-   "env": {"CUDA_VISIBLE_DEVICES": "6,7"}
+   "env": {"CUDA_VISIBLE_DEVICES": "5, 6,7"}
 },
 
 
@@ -27,16 +28,35 @@
 "name":"train without accelerate",
 "type":"python",
 "request":"launch",
-"program":"${workspaceFolder}/src/model_building/train.py",
+"program":"${workspaceFolder}/src/runs/train.py",
 "console":"integratedTerminal",
 "env": {"CUDA_VISIBLE_DEVICES": "6"}
 },
+
+
 {
 
 "name":"predict",
+"justMyCode": false,
 "type":"python",
 "request":"launch",
-"program":"${workspaceFolder}/src/model_building/predict.py",
+"program":"${workspaceFolder}/src/runs/predict.py",
+"console":"integratedTerminal",
+"env": {"CUDA_VISIBLE_DEVICES": "6"}
+
+},
+
+
+
+
+
+{
+
+"name":"data_process",
+"justMyCode": false,
+"type":"python",
+"request":"launch",
+"program":"${workspaceFolder}/src/data_processing/data_statistics.py",
 "console":"integratedTerminal",
 "env": {"CUDA_VISIBLE_DEVICES": "6"}
 

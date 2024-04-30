@@ -7,6 +7,7 @@ import tqdm
 import os
 from train_args import parse_args
 from transformers import BertTokenizer, AutoTokenizer
+import jieba
 
 class CustomDataset(Dataset):
     def __init__(self, data: json, args: Any, tokenizer: Any,  version: str = None):
@@ -110,10 +111,21 @@ class CustomDataset(Dataset):
         labels = torch.tensor(labels, dtype=torch.float16 ).to(self.device)
         
         return {'text': texts, 'audio': audio_embeddings, 'label': labels}
-    
+   
+    def split_text(self, text):
+        split_text = jieba.cut(text)
+        split_text = list(split_text)
+        return split_text
     
     def tokenize_text(self, text):
-        return self.tokenizer(text, return_tensors='pt', max_length=self.args.max_length, padding='max_length', truncation=True)
+        text = self.split_text(text)
+        return self.tokenizer(text, return_tensors='pt',
+                              max_length=self.args.max_length, 
+                              padding='max_length',
+                              truncation=True,
+                              return_attention_mask = True, is_split_into_words=True
+                              
+                              )
     
     
     def get_audio_embedding(self, audio_embedding):
@@ -131,9 +143,14 @@ class CustomDataset(Dataset):
        
         texts = self.tokenize_text(self.data[idx]['text'])
         
-        audio_embeddings = self.get_audio_embedding(self.data[idx]['audio_embedding'].item()['embeddings'])
-        
-        labels = self.encode_label(self.data[idx]['label'])
+        try:
+            audio_embeddings = self.get_audio_embedding(self.data[idx]['audio_embedding'].item()['embeddings'])
+        except:
+            audio_embeddings = self.get_audio_embedding(self.data[idx]['audio_embedding']['embeddings'])
+        try:
+            labels = self.encode_label(self.data[idx]['label'])
+        except:
+            labels = np.zeros(len(self.label_set))
         
         
         # to tensor and to  device

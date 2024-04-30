@@ -1,0 +1,1009 @@
+
+CUDA COUNTS: 3
+CUDA COUNTS: 3
+[2024-04-29 12:41:25,944] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-04-29 12:41:25,945] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+[93m [WARNING] [0m using untested triton version (2.2.0), only 1.0.0 is known to be compatible
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+[93m [WARNING] [0m using untested triton version (2.2.0), only 1.0.0 is known to be compatible
+[2024-04-29 12:41:26,881] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-04-29 12:41:26,881] [INFO] [comm.py:668:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+[2024-04-29 12:41:26,882] [INFO] [comm.py:637:init_distributed] cdb=None
+trainable params: 9,437,184 || all params: 7,747,145,728 || trainable%: 0.12181497975301801
+trainable params: 9,437,184 || all params: 7,747,145,728 || trainable%: 0.12181497975301801
+accelerator device:  cuda:0
+Installed CUDA version 12.3 does not match the version torch was compiled with 12.1 but since the APIs are compatible, accepting this combination
+ninja: no work to do.
+Time to load cpu_adam op: 2.5803768634796143 seconds
+Installed CUDA version 12.3 does not match the version torch was compiled with 12.1 but since the APIs are compatible, accepting this combination
+Adam Optimizer #0 is created with AVX512 arithmetic capability.
+Config: alpha=0.000010, betas=(0.900000, 0.999000), weight_decay=0.010000, adam_w=1
+ninja: no work to do.
+Time to load cpu_adam op: 2.661409616470337 seconds
+Adam Optimizer #0 is created with AVX512 arithmetic capability.
+Config: alpha=0.000010, betas=(0.900000, 0.999000), weight_decay=0.010000, adam_w=1
+[2024-04-29 12:42:15,859] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed info: version=0.14.1, git-hash=unknown, git-branch=unknown
+[2024-04-29 12:42:16,298] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2024-04-29 12:42:16,300] [INFO] [logging.py:96:log_dist] [Rank 0] Using client Optimizer as basic optimizer
+[2024-04-29 12:42:16,300] [INFO] [logging.py:96:log_dist] [Rank 0] Removing param_group that has no 'params' in the basic Optimizer
+[2024-04-29 12:42:16,319] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Basic Optimizer = DeepSpeedCPUAdam
+[2024-04-29 12:42:16,320] [INFO] [utils.py:56:is_zero_supported_optimizer] Checking ZeRO support for optimizer=DeepSpeedCPUAdam type=<class 'deepspeed.ops.adam.cpu_adam.DeepSpeedCPUAdam'>
+[2024-04-29 12:42:16,320] [INFO] [logging.py:96:log_dist] [Rank 0] Creating fp16 ZeRO stage 3 optimizer, MiCS is enabled False, Hierarchical params gather False
+[2024-04-29 12:42:16,320] [INFO] [logging.py:96:log_dist] [Rank 0] Creating torch.float16 ZeRO stage 3 optimizer
+[2024-04-29 12:42:16,723] [INFO] [utils.py:772:see_memory_usage] Stage 3 initialize beginning
+[2024-04-29 12:42:16,724] [INFO] [utils.py:773:see_memory_usage] MA 14.54 GB         Max_MA 14.55 GB         CA 14.56 GB         Max_CA 15 GB 
+[2024-04-29 12:42:16,725] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 52.71 GB, percent = 8.4%
+[2024-04-29 12:42:16,728] [INFO] [stage3.py:130:__init__] Reduce bucket size 16777216
+[2024-04-29 12:42:16,728] [INFO] [stage3.py:131:__init__] Prefetch bucket size 15099494
+[2024-04-29 12:42:16,901] [INFO] [utils.py:772:see_memory_usage] DeepSpeedZeRoOffload initialize [begin]
+[2024-04-29 12:42:16,901] [INFO] [utils.py:773:see_memory_usage] MA 14.54 GB         Max_MA 14.54 GB         CA 14.56 GB         Max_CA 15 GB 
+[2024-04-29 12:42:16,902] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 52.71 GB, percent = 8.4%
+Parameter Offload: Total persistent parameters: 281615 in 70 params
+[2024-04-29 12:42:25,731] [INFO] [utils.py:772:see_memory_usage] DeepSpeedZeRoOffload initialize [end]
+[2024-04-29 12:42:25,732] [INFO] [utils.py:773:see_memory_usage] MA 0.1 GB         Max_MA 14.54 GB         CA 14.56 GB         Max_CA 15 GB 
+[2024-04-29 12:42:25,732] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 70.23 GB, percent = 11.1%
+[2024-04-29 12:42:25,870] [INFO] [utils.py:772:see_memory_usage] Before creating fp16 partitions
+[2024-04-29 12:42:25,871] [INFO] [utils.py:773:see_memory_usage] MA 0.1 GB         Max_MA 0.1 GB         CA 14.56 GB         Max_CA 15 GB 
+[2024-04-29 12:42:25,871] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 70.22 GB, percent = 11.1%
+[2024-04-29 12:42:26,014] [INFO] [utils.py:772:see_memory_usage] After creating fp16 partitions: 1
+[2024-04-29 12:42:26,015] [INFO] [utils.py:773:see_memory_usage] MA 0.1 GB         Max_MA 0.1 GB         CA 14.56 GB         Max_CA 15 GB 
+[2024-04-29 12:42:26,015] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 70.3 GB, percent = 11.2%
+[2024-04-29 12:42:26,139] [INFO] [utils.py:772:see_memory_usage] Before creating fp32 partitions
+[2024-04-29 12:42:26,140] [INFO] [utils.py:773:see_memory_usage] MA 0.1 GB         Max_MA 0.1 GB         CA 14.56 GB         Max_CA 15 GB 
+[2024-04-29 12:42:26,140] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 70.3 GB, percent = 11.2%
+[2024-04-29 12:42:26,319] [INFO] [utils.py:772:see_memory_usage] After creating fp32 partitions
+[2024-04-29 12:42:26,320] [INFO] [utils.py:773:see_memory_usage] MA 0.1 GB         Max_MA 0.1 GB         CA 14.56 GB         Max_CA 15 GB 
+[2024-04-29 12:42:26,320] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 70.34 GB, percent = 11.2%
+[2024-04-29 12:42:26,448] [INFO] [utils.py:772:see_memory_usage] Before initializing optimizer states
+[2024-04-29 12:42:26,448] [INFO] [utils.py:773:see_memory_usage] MA 0.1 GB         Max_MA 0.1 GB         CA 14.56 GB         Max_CA 15 GB 
+[2024-04-29 12:42:26,449] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 70.38 GB, percent = 11.2%
+[2024-04-29 12:42:26,667] [INFO] [utils.py:772:see_memory_usage] After initializing optimizer states
+[2024-04-29 12:42:26,667] [INFO] [utils.py:773:see_memory_usage] MA 0.1 GB         Max_MA 0.1 GB         CA 14.56 GB         Max_CA 15 GB 
+[2024-04-29 12:42:26,668] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 70.42 GB, percent = 11.2%
+[2024-04-29 12:42:26,668] [INFO] [stage3.py:486:_setup_for_real_optimizer] optimizer state initialized
+[2024-04-29 12:42:26,907] [INFO] [utils.py:772:see_memory_usage] After initializing ZeRO optimizer
+[2024-04-29 12:42:26,908] [INFO] [utils.py:773:see_memory_usage] MA 0.13 GB         Max_MA 0.14 GB         CA 14.56 GB         Max_CA 15 GB 
+[2024-04-29 12:42:26,908] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 70.52 GB, percent = 11.2%
+[2024-04-29 12:42:26,908] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Final Optimizer = DeepSpeedCPUAdam
+[2024-04-29 12:42:26,908] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed using configured LR scheduler = WarmupDecayLR
+[2024-04-29 12:42:26,909] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed LR Scheduler = <deepspeed.runtime.lr_schedules.WarmupDecayLR object at 0x7f5b4d3e6c10>
+[2024-04-29 12:42:26,909] [INFO] [logging.py:96:log_dist] [Rank 0] step=0, skipped=0, lr=[1e-05], mom=[(0.9, 0.999)]
+[2024-04-29 12:42:26,911] [INFO] [config.py:996:print] DeepSpeedEngine configuration:
+[2024-04-29 12:42:26,911] [INFO] [config.py:1000:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2024-04-29 12:42:26,911] [INFO] [config.py:1000:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2024-04-29 12:42:26,911] [INFO] [config.py:1000:print]   amp_enabled .................. False
+[2024-04-29 12:42:26,911] [INFO] [config.py:1000:print]   amp_params ................... False
+[2024-04-29 12:42:26,911] [INFO] [config.py:1000:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2024-04-29 12:42:26,912] [INFO] [config.py:1000:print]   bfloat16_enabled ............. False
+[2024-04-29 12:42:26,912] [INFO] [config.py:1000:print]   bfloat16_immediate_grad_update  False
+[2024-04-29 12:42:26,912] [INFO] [config.py:1000:print]   checkpoint_parallel_write_pipeline  False
+[2024-04-29 12:42:26,912] [INFO] [config.py:1000:print]   checkpoint_tag_validation_enabled  True
+[2024-04-29 12:42:26,912] [INFO] [config.py:1000:print]   checkpoint_tag_validation_fail  False
+[2024-04-29 12:42:26,912] [INFO] [config.py:1000:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7f5b4c212580>
+[2024-04-29 12:42:26,912] [INFO] [config.py:1000:print]   communication_data_type ...... None
+[2024-04-29 12:42:26,912] [INFO] [config.py:1000:print]   compile_config ............... enabled=False backend='inductor' kwargs={}
+[2024-04-29 12:42:26,912] [INFO] [config.py:1000:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2024-04-29 12:42:26,912] [INFO] [config.py:1000:print]   curriculum_enabled_legacy .... False
+[2024-04-29 12:42:26,912] [INFO] [config.py:1000:print]   curriculum_params_legacy ..... False
+[2024-04-29 12:42:26,912] [INFO] [config.py:1000:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2024-04-29 12:42:26,912] [INFO] [config.py:1000:print]   data_efficiency_enabled ...... False
+[2024-04-29 12:42:26,912] [INFO] [config.py:1000:print]   dataloader_drop_last ......... False
+[2024-04-29 12:42:26,912] [INFO] [config.py:1000:print]   disable_allgather ............ False
+[2024-04-29 12:42:26,912] [INFO] [config.py:1000:print]   dump_state ................... False
+[2024-04-29 12:42:26,912] [INFO] [config.py:1000:print]   dynamic_loss_scale_args ...... {'init_scale': 65536, 'scale_window': 1000, 'delayed_shift': 2, 'consecutive_hysteresis': False, 'min_scale': 1}
+[2024-04-29 12:42:26,912] [INFO] [config.py:1000:print]   eigenvalue_enabled ........... False
+[2024-04-29 12:42:26,912] [INFO] [config.py:1000:print]   eigenvalue_gas_boundary_resolution  1
+[2024-04-29 12:42:26,912] [INFO] [config.py:1000:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2024-04-29 12:42:26,912] [INFO] [config.py:1000:print]   eigenvalue_layer_num ......... 0
+[2024-04-29 12:42:26,912] [INFO] [config.py:1000:print]   eigenvalue_max_iter .......... 100
+[2024-04-29 12:42:26,912] [INFO] [config.py:1000:print]   eigenvalue_stability ......... 1e-06
+[2024-04-29 12:42:26,912] [INFO] [config.py:1000:print]   eigenvalue_tol ............... 0.01
+[2024-04-29 12:42:26,912] [INFO] [config.py:1000:print]   eigenvalue_verbose ........... False
+[2024-04-29 12:42:26,912] [INFO] [config.py:1000:print]   elasticity_enabled ........... False
+[2024-04-29 12:42:26,913] [INFO] [config.py:1000:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "recompute_fwd_factor": 0.0, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2024-04-29 12:42:26,913] [INFO] [config.py:1000:print]   fp16_auto_cast ............... False
+[2024-04-29 12:42:26,913] [INFO] [config.py:1000:print]   fp16_enabled ................. True
+[2024-04-29 12:42:26,913] [INFO] [config.py:1000:print]   fp16_master_weights_and_gradients  False
+[2024-04-29 12:42:26,913] [INFO] [config.py:1000:print]   global_rank .................. 0
+[2024-04-29 12:42:26,913] [INFO] [config.py:1000:print]   grad_accum_dtype ............. None
+[2024-04-29 12:42:26,913] [INFO] [config.py:1000:print]   gradient_accumulation_steps .. 1
+[2024-04-29 12:42:26,913] [INFO] [config.py:1000:print]   gradient_clipping ............ 1.0
+[2024-04-29 12:42:26,913] [INFO] [config.py:1000:print]   gradient_predivide_factor .... 1.0
+[2024-04-29 12:42:26,913] [INFO] [config.py:1000:print]   graph_harvesting ............. False
+[2024-04-29 12:42:26,913] [INFO] [config.py:1000:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2024-04-29 12:42:26,913] [INFO] [config.py:1000:print]   initial_dynamic_scale ........ 65536
+[2024-04-29 12:42:26,913] [INFO] [config.py:1000:print]   load_universal_checkpoint .... False
+[2024-04-29 12:42:26,913] [INFO] [config.py:1000:print]   loss_scale ................... 0
+[2024-04-29 12:42:26,913] [INFO] [config.py:1000:print]   memory_breakdown ............. False
+[2024-04-29 12:42:26,913] [INFO] [config.py:1000:print]   mics_hierarchial_params_gather  False
+[2024-04-29 12:42:26,913] [INFO] [config.py:1000:print]   mics_shard_size .............. -1
+[2024-04-29 12:42:26,913] [INFO] [config.py:1000:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=False
+[2024-04-29 12:42:26,913] [INFO] [config.py:1000:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2024-04-29 12:42:26,913] [INFO] [config.py:1000:print]   optimizer_legacy_fusion ...... False
+[2024-04-29 12:42:26,913] [INFO] [config.py:1000:print]   optimizer_name ............... None
+[2024-04-29 12:42:26,913] [INFO] [config.py:1000:print]   optimizer_params ............. None
+[2024-04-29 12:42:26,913] [INFO] [config.py:1000:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0, 'pipe_partitioned': True, 'grad_partitioned': True}
+[2024-04-29 12:42:26,914] [INFO] [config.py:1000:print]   pld_enabled .................. False
+[2024-04-29 12:42:26,914] [INFO] [config.py:1000:print]   pld_params ................... False
+[2024-04-29 12:42:26,914] [INFO] [config.py:1000:print]   prescale_gradients ........... False
+[2024-04-29 12:42:26,914] [INFO] [config.py:1000:print]   scheduler_name ............... WarmupDecayLR
+[2024-04-29 12:42:26,914] [INFO] [config.py:1000:print]   scheduler_params ............. {'warmup_min_lr': 1e-05, 'warmup_max_lr': 0.001, 'warmup_num_steps': 200, 'total_num_steps': 50000}
+[2024-04-29 12:42:26,914] [INFO] [config.py:1000:print]   seq_parallel_communication_data_type  torch.float32
+[2024-04-29 12:42:26,914] [INFO] [config.py:1000:print]   sparse_attention ............. None
+[2024-04-29 12:42:26,914] [INFO] [config.py:1000:print]   sparse_gradients_enabled ..... False
+[2024-04-29 12:42:26,914] [INFO] [config.py:1000:print]   steps_per_print .............. inf
+[2024-04-29 12:42:26,914] [INFO] [config.py:1000:print]   train_batch_size ............. 2
+[2024-04-29 12:42:26,914] [INFO] [config.py:1000:print]   train_micro_batch_size_per_gpu  1
+[2024-04-29 12:42:26,914] [INFO] [config.py:1000:print]   use_data_before_expert_parallel_  False
+[2024-04-29 12:42:26,914] [INFO] [config.py:1000:print]   use_node_local_storage ....... False
+[2024-04-29 12:42:26,914] [INFO] [config.py:1000:print]   wall_clock_breakdown ......... False
+[2024-04-29 12:42:26,914] [INFO] [config.py:1000:print]   weight_quantization_config ... None
+[2024-04-29 12:42:26,914] [INFO] [config.py:1000:print]   world_size ................... 2
+[2024-04-29 12:42:26,914] [INFO] [config.py:1000:print]   zero_allow_untested_optimizer  True
+[2024-04-29 12:42:26,914] [INFO] [config.py:1000:print]   zero_config .................. stage=3 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=16777216 use_multi_rank_bucket_allreduce=True allgather_partitions=True allgather_bucket_size=500,000,000 overlap_comm=True load_from_fp32_weights=True elastic_checkpoint=False offload_param=DeepSpeedZeroOffloadParamConfig(device='cpu', nvme_path=None, buffer_count=5, buffer_size=100,000,000, max_in_cpu=1,000,000,000, pin_memory=True) offload_optimizer=DeepSpeedZeroOffloadOptimizerConfig(device='cpu', nvme_path=None, buffer_count=4, pin_memory=True, pipeline=False, pipeline_read=False, pipeline_write=False, fast_init=False, ratio=1.0) sub_group_size=1000000000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=15099494 param_persistence_threshold=40960 model_persistence_threshold=sys.maxsize max_live_parameters=1000000000 max_reuse_distance=1000000000 gather_16bit_weights_on_model_save=True stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_nontrainable_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True pipeline_loading_checkpoint=False override_module_apply=True
+[2024-04-29 12:42:26,914] [INFO] [config.py:1000:print]   zero_enabled ................. True
+[2024-04-29 12:42:26,914] [INFO] [config.py:1000:print]   zero_force_ds_cpu_optimizer .. True
+[2024-04-29 12:42:26,914] [INFO] [config.py:1000:print]   zero_optimization_stage ...... 3
+[2024-04-29 12:42:26,915] [INFO] [config.py:986:print_user_config]   json = {
+    "fp16": {
+        "enabled": true, 
+        "loss_scale": 0, 
+        "loss_scale_window": 1000, 
+        "initial_scale_power": 16, 
+        "hysteresis": 2, 
+        "min_loss_scale": 1
+    }, 
+    "scheduler": {
+        "type": "WarmupDecayLR", 
+        "params": {
+            "warmup_min_lr": 1e-05, 
+            "warmup_max_lr": 0.001, 
+            "warmup_num_steps": 200, 
+            "total_num_steps": 5.000000e+04
+        }
+    }, 
+    "zero_optimization": {
+        "stage": 3, 
+        "offload_optimizer": {
+            "device": "cpu", 
+            "pin_memory": true
+        }, 
+        "offload_param": {
+            "device": "cpu", 
+            "pin_memory": true
+        }, 
+        "overlap_comm": true, 
+        "contiguous_gradients": true, 
+        "sub_group_size": 1.000000e+09, 
+        "reduce_bucket_size": 1.677722e+07, 
+        "stage3_prefetch_bucket_size": 1.509949e+07, 
+        "stage3_param_persistence_threshold": 4.096000e+04, 
+        "stage3_max_live_parameters": 1.000000e+09, 
+        "stage3_max_reuse_distance": 1.000000e+09, 
+        "stage3_gather_16bit_weights_on_model_save": true
+    }, 
+    "gradient_accumulation_steps": 1, 
+    "gradient_clipping": 1.0, 
+    "steps_per_print": inf, 
+    "train_batch_size": 2, 
+    "train_micro_batch_size_per_gpu": 1, 
+    "bf16": {
+        "enabled": false
+    }, 
+    "zero_allow_untested_optimizer": true
+}
+CUDA COUNTS: 3
+CUDA COUNTS: 3
+[2024-04-29 12:46:56,554] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-04-29 12:46:56,555] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+[93m [WARNING] [0m using untested triton version (2.2.0), only 1.0.0 is known to be compatible
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+[93m [WARNING] [0m using untested triton version (2.2.0), only 1.0.0 is known to be compatible
+[2024-04-29 12:46:57,423] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-04-29 12:46:57,429] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-04-29 12:46:57,429] [INFO] [comm.py:668:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+accelerator device:  cuda:0
+Installed CUDA version 12.3 does not match the version torch was compiled with 12.1 but since the APIs are compatible, accepting this combination
+ninja: no work to do.
+Time to load cpu_adam op: 2.564357042312622 seconds
+Installed CUDA version 12.3 does not match the version torch was compiled with 12.1 but since the APIs are compatible, accepting this combination
+ninja: no work to do.
+Time to load cpu_adam op: 2.5788509845733643 seconds
+Adam Optimizer #0 is created with AVX512 arithmetic capability.
+Config: alpha=0.000010, betas=(0.900000, 0.999000), weight_decay=0.010000, adam_w=1
+Adam Optimizer #0 is created with AVX512 arithmetic capability.
+Config: alpha=0.000010, betas=(0.900000, 0.999000), weight_decay=0.010000, adam_w=1
+[2024-04-29 12:47:11,132] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed info: version=0.14.1, git-hash=unknown, git-branch=unknown
+[2024-04-29 12:47:11,556] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2024-04-29 12:47:11,558] [INFO] [logging.py:96:log_dist] [Rank 0] Using client Optimizer as basic optimizer
+[2024-04-29 12:47:11,558] [INFO] [logging.py:96:log_dist] [Rank 0] Removing param_group that has no 'params' in the basic Optimizer
+[2024-04-29 12:47:11,573] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Basic Optimizer = DeepSpeedCPUAdam
+[2024-04-29 12:47:11,573] [INFO] [utils.py:56:is_zero_supported_optimizer] Checking ZeRO support for optimizer=DeepSpeedCPUAdam type=<class 'deepspeed.ops.adam.cpu_adam.DeepSpeedCPUAdam'>
+[2024-04-29 12:47:11,574] [INFO] [logging.py:96:log_dist] [Rank 0] Creating fp16 ZeRO stage 3 optimizer, MiCS is enabled False, Hierarchical params gather False
+[2024-04-29 12:47:11,574] [INFO] [logging.py:96:log_dist] [Rank 0] Creating torch.float16 ZeRO stage 3 optimizer
+[2024-04-29 12:47:11,771] [INFO] [utils.py:772:see_memory_usage] Stage 3 initialize beginning
+[2024-04-29 12:47:11,771] [INFO] [utils.py:773:see_memory_usage] MA 0.21 GB         Max_MA 0.43 GB         CA 0.48 GB         Max_CA 0 GB 
+[2024-04-29 12:47:11,772] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 52.56 GB, percent = 8.3%
+[2024-04-29 12:47:11,773] [INFO] [stage3.py:130:__init__] Reduce bucket size 16777216
+[2024-04-29 12:47:11,773] [INFO] [stage3.py:131:__init__] Prefetch bucket size 15099494
+[2024-04-29 12:47:11,881] [INFO] [utils.py:772:see_memory_usage] DeepSpeedZeRoOffload initialize [begin]
+[2024-04-29 12:47:11,882] [INFO] [utils.py:773:see_memory_usage] MA 0.21 GB         Max_MA 0.21 GB         CA 0.48 GB         Max_CA 0 GB 
+[2024-04-29 12:47:11,882] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 52.56 GB, percent = 8.3%
+Parameter Offload: Total persistent parameters: 139023 in 129 params
+[2024-04-29 12:47:12,453] [INFO] [utils.py:772:see_memory_usage] DeepSpeedZeRoOffload initialize [end]
+[2024-04-29 12:47:12,454] [INFO] [utils.py:773:see_memory_usage] MA 0.0 GB         Max_MA 0.21 GB         CA 0.48 GB         Max_CA 0 GB 
+[2024-04-29 12:47:12,454] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 53.0 GB, percent = 8.4%
+[2024-04-29 12:47:12,568] [INFO] [utils.py:772:see_memory_usage] Before creating fp16 partitions
+[2024-04-29 12:47:12,569] [INFO] [utils.py:773:see_memory_usage] MA 0.0 GB         Max_MA 0.0 GB         CA 0.48 GB         Max_CA 0 GB 
+[2024-04-29 12:47:12,569] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 53.01 GB, percent = 8.4%
+[2024-04-29 12:47:12,832] [INFO] [utils.py:772:see_memory_usage] After creating fp16 partitions: 1
+[2024-04-29 12:47:12,832] [INFO] [utils.py:773:see_memory_usage] MA 0.0 GB         Max_MA 0.0 GB         CA 0.48 GB         Max_CA 0 GB 
+[2024-04-29 12:47:12,833] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 53.47 GB, percent = 8.5%
+[2024-04-29 12:47:12,955] [INFO] [utils.py:772:see_memory_usage] Before creating fp32 partitions
+[2024-04-29 12:47:12,956] [INFO] [utils.py:773:see_memory_usage] MA 0.0 GB         Max_MA 0.0 GB         CA 0.48 GB         Max_CA 0 GB 
+[2024-04-29 12:47:12,956] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 53.47 GB, percent = 8.5%
+[2024-04-29 12:47:13,297] [INFO] [utils.py:772:see_memory_usage] After creating fp32 partitions
+[2024-04-29 12:47:13,298] [INFO] [utils.py:773:see_memory_usage] MA 0.0 GB         Max_MA 0.0 GB         CA 0.48 GB         Max_CA 0 GB 
+[2024-04-29 12:47:13,298] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 53.68 GB, percent = 8.5%
+[2024-04-29 12:47:13,422] [INFO] [utils.py:772:see_memory_usage] Before initializing optimizer states
+[2024-04-29 12:47:13,423] [INFO] [utils.py:773:see_memory_usage] MA 0.0 GB         Max_MA 0.0 GB         CA 0.48 GB         Max_CA 0 GB 
+[2024-04-29 12:47:13,423] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 53.9 GB, percent = 8.6%
+[2024-04-29 12:47:13,963] [INFO] [utils.py:772:see_memory_usage] After initializing optimizer states
+[2024-04-29 12:47:13,963] [INFO] [utils.py:773:see_memory_usage] MA 0.0 GB         Max_MA 0.0 GB         CA 0.48 GB         Max_CA 0 GB 
+[2024-04-29 12:47:13,964] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 54.18 GB, percent = 8.6%
+[2024-04-29 12:47:13,964] [INFO] [stage3.py:486:_setup_for_real_optimizer] optimizer state initialized
+[2024-04-29 12:47:14,379] [INFO] [utils.py:772:see_memory_usage] After initializing ZeRO optimizer
+[2024-04-29 12:47:14,380] [INFO] [utils.py:773:see_memory_usage] MA 0.03 GB         Max_MA 0.09 GB         CA 0.48 GB         Max_CA 0 GB 
+[2024-04-29 12:47:14,380] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 54.49 GB, percent = 8.7%
+[2024-04-29 12:47:14,380] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Final Optimizer = DeepSpeedCPUAdam
+[2024-04-29 12:47:14,380] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed using configured LR scheduler = WarmupDecayLR
+[2024-04-29 12:47:14,380] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed LR Scheduler = <deepspeed.runtime.lr_schedules.WarmupDecayLR object at 0x7f96a68bffa0>
+[2024-04-29 12:47:14,380] [INFO] [logging.py:96:log_dist] [Rank 0] step=0, skipped=0, lr=[1e-05], mom=[(0.9, 0.999)]
+[2024-04-29 12:47:14,381] [INFO] [config.py:996:print] DeepSpeedEngine configuration:
+[2024-04-29 12:47:14,382] [INFO] [config.py:1000:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2024-04-29 12:47:14,382] [INFO] [config.py:1000:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2024-04-29 12:47:14,382] [INFO] [config.py:1000:print]   amp_enabled .................. False
+[2024-04-29 12:47:14,382] [INFO] [config.py:1000:print]   amp_params ................... False
+[2024-04-29 12:47:14,382] [INFO] [config.py:1000:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2024-04-29 12:47:14,382] [INFO] [config.py:1000:print]   bfloat16_enabled ............. False
+[2024-04-29 12:47:14,382] [INFO] [config.py:1000:print]   bfloat16_immediate_grad_update  False
+[2024-04-29 12:47:14,382] [INFO] [config.py:1000:print]   checkpoint_parallel_write_pipeline  False
+[2024-04-29 12:47:14,382] [INFO] [config.py:1000:print]   checkpoint_tag_validation_enabled  True
+[2024-04-29 12:47:14,382] [INFO] [config.py:1000:print]   checkpoint_tag_validation_fail  False
+[2024-04-29 12:47:14,382] [INFO] [config.py:1000:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7f96c05a39a0>
+[2024-04-29 12:47:14,382] [INFO] [config.py:1000:print]   communication_data_type ...... None
+[2024-04-29 12:47:14,382] [INFO] [config.py:1000:print]   compile_config ............... enabled=False backend='inductor' kwargs={}
+[2024-04-29 12:47:14,382] [INFO] [config.py:1000:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2024-04-29 12:47:14,382] [INFO] [config.py:1000:print]   curriculum_enabled_legacy .... False
+[2024-04-29 12:47:14,382] [INFO] [config.py:1000:print]   curriculum_params_legacy ..... False
+[2024-04-29 12:47:14,382] [INFO] [config.py:1000:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2024-04-29 12:47:14,382] [INFO] [config.py:1000:print]   data_efficiency_enabled ...... False
+[2024-04-29 12:47:14,383] [INFO] [config.py:1000:print]   dataloader_drop_last ......... False
+[2024-04-29 12:47:14,383] [INFO] [config.py:1000:print]   disable_allgather ............ False
+[2024-04-29 12:47:14,383] [INFO] [config.py:1000:print]   dump_state ................... False
+[2024-04-29 12:47:14,383] [INFO] [config.py:1000:print]   dynamic_loss_scale_args ...... {'init_scale': 65536, 'scale_window': 1000, 'delayed_shift': 2, 'consecutive_hysteresis': False, 'min_scale': 1}
+[2024-04-29 12:47:14,383] [INFO] [config.py:1000:print]   eigenvalue_enabled ........... False
+[2024-04-29 12:47:14,383] [INFO] [config.py:1000:print]   eigenvalue_gas_boundary_resolution  1
+[2024-04-29 12:47:14,383] [INFO] [config.py:1000:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2024-04-29 12:47:14,383] [INFO] [config.py:1000:print]   eigenvalue_layer_num ......... 0
+[2024-04-29 12:47:14,383] [INFO] [config.py:1000:print]   eigenvalue_max_iter .......... 100
+[2024-04-29 12:47:14,383] [INFO] [config.py:1000:print]   eigenvalue_stability ......... 1e-06
+[2024-04-29 12:47:14,383] [INFO] [config.py:1000:print]   eigenvalue_tol ............... 0.01
+[2024-04-29 12:47:14,383] [INFO] [config.py:1000:print]   eigenvalue_verbose ........... False
+[2024-04-29 12:47:14,383] [INFO] [config.py:1000:print]   elasticity_enabled ........... False
+[2024-04-29 12:47:14,383] [INFO] [config.py:1000:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "recompute_fwd_factor": 0.0, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2024-04-29 12:47:14,383] [INFO] [config.py:1000:print]   fp16_auto_cast ............... False
+[2024-04-29 12:47:14,383] [INFO] [config.py:1000:print]   fp16_enabled ................. True
+[2024-04-29 12:47:14,383] [INFO] [config.py:1000:print]   fp16_master_weights_and_gradients  False
+[2024-04-29 12:47:14,383] [INFO] [config.py:1000:print]   global_rank .................. 0
+[2024-04-29 12:47:14,383] [INFO] [config.py:1000:print]   grad_accum_dtype ............. None
+[2024-04-29 12:47:14,383] [INFO] [config.py:1000:print]   gradient_accumulation_steps .. 1
+[2024-04-29 12:47:14,383] [INFO] [config.py:1000:print]   gradient_clipping ............ 1.0
+[2024-04-29 12:47:14,383] [INFO] [config.py:1000:print]   gradient_predivide_factor .... 1.0
+[2024-04-29 12:47:14,383] [INFO] [config.py:1000:print]   graph_harvesting ............. False
+[2024-04-29 12:47:14,383] [INFO] [config.py:1000:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2024-04-29 12:47:14,383] [INFO] [config.py:1000:print]   initial_dynamic_scale ........ 65536
+[2024-04-29 12:47:14,383] [INFO] [config.py:1000:print]   load_universal_checkpoint .... False
+[2024-04-29 12:47:14,383] [INFO] [config.py:1000:print]   loss_scale ................... 0
+[2024-04-29 12:47:14,383] [INFO] [config.py:1000:print]   memory_breakdown ............. False
+[2024-04-29 12:47:14,383] [INFO] [config.py:1000:print]   mics_hierarchial_params_gather  False
+[2024-04-29 12:47:14,384] [INFO] [config.py:1000:print]   mics_shard_size .............. -1
+[2024-04-29 12:47:14,384] [INFO] [config.py:1000:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=False
+[2024-04-29 12:47:14,384] [INFO] [config.py:1000:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2024-04-29 12:47:14,384] [INFO] [config.py:1000:print]   optimizer_legacy_fusion ...... False
+[2024-04-29 12:47:14,384] [INFO] [config.py:1000:print]   optimizer_name ............... None
+[2024-04-29 12:47:14,384] [INFO] [config.py:1000:print]   optimizer_params ............. None
+[2024-04-29 12:47:14,384] [INFO] [config.py:1000:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0, 'pipe_partitioned': True, 'grad_partitioned': True}
+[2024-04-29 12:47:14,384] [INFO] [config.py:1000:print]   pld_enabled .................. False
+[2024-04-29 12:47:14,384] [INFO] [config.py:1000:print]   pld_params ................... False
+[2024-04-29 12:47:14,384] [INFO] [config.py:1000:print]   prescale_gradients ........... False
+[2024-04-29 12:47:14,384] [INFO] [config.py:1000:print]   scheduler_name ............... WarmupDecayLR
+[2024-04-29 12:47:14,384] [INFO] [config.py:1000:print]   scheduler_params ............. {'warmup_min_lr': 1e-05, 'warmup_max_lr': 0.001, 'warmup_num_steps': 200, 'total_num_steps': 50000}
+[2024-04-29 12:47:14,384] [INFO] [config.py:1000:print]   seq_parallel_communication_data_type  torch.float32
+[2024-04-29 12:47:14,384] [INFO] [config.py:1000:print]   sparse_attention ............. None
+[2024-04-29 12:47:14,384] [INFO] [config.py:1000:print]   sparse_gradients_enabled ..... False
+[2024-04-29 12:47:14,384] [INFO] [config.py:1000:print]   steps_per_print .............. inf
+[2024-04-29 12:47:14,384] [INFO] [config.py:1000:print]   train_batch_size ............. 2
+[2024-04-29 12:47:14,384] [INFO] [config.py:1000:print]   train_micro_batch_size_per_gpu  1
+[2024-04-29 12:47:14,384] [INFO] [config.py:1000:print]   use_data_before_expert_parallel_  False
+[2024-04-29 12:47:14,384] [INFO] [config.py:1000:print]   use_node_local_storage ....... False
+[2024-04-29 12:47:14,384] [INFO] [config.py:1000:print]   wall_clock_breakdown ......... False
+[2024-04-29 12:47:14,384] [INFO] [config.py:1000:print]   weight_quantization_config ... None
+[2024-04-29 12:47:14,384] [INFO] [config.py:1000:print]   world_size ................... 2
+[2024-04-29 12:47:14,384] [INFO] [config.py:1000:print]   zero_allow_untested_optimizer  True
+[2024-04-29 12:47:14,384] [INFO] [config.py:1000:print]   zero_config .................. stage=3 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=16777216 use_multi_rank_bucket_allreduce=True allgather_partitions=True allgather_bucket_size=500,000,000 overlap_comm=True load_from_fp32_weights=True elastic_checkpoint=False offload_param=DeepSpeedZeroOffloadParamConfig(device='cpu', nvme_path=None, buffer_count=5, buffer_size=100,000,000, max_in_cpu=1,000,000,000, pin_memory=True) offload_optimizer=DeepSpeedZeroOffloadOptimizerConfig(device='cpu', nvme_path=None, buffer_count=4, pin_memory=True, pipeline=False, pipeline_read=False, pipeline_write=False, fast_init=False, ratio=1.0) sub_group_size=1000000000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=15099494 param_persistence_threshold=40960 model_persistence_threshold=sys.maxsize max_live_parameters=1000000000 max_reuse_distance=1000000000 gather_16bit_weights_on_model_save=True stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_nontrainable_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True pipeline_loading_checkpoint=False override_module_apply=True
+[2024-04-29 12:47:14,384] [INFO] [config.py:1000:print]   zero_enabled ................. True
+[2024-04-29 12:47:14,385] [INFO] [config.py:1000:print]   zero_force_ds_cpu_optimizer .. True
+[2024-04-29 12:47:14,385] [INFO] [config.py:1000:print]   zero_optimization_stage ...... 3
+[2024-04-29 12:47:14,385] [INFO] [config.py:986:print_user_config]   json = {
+    "fp16": {
+        "enabled": true, 
+        "loss_scale": 0, 
+        "loss_scale_window": 1000, 
+        "initial_scale_power": 16, 
+        "hysteresis": 2, 
+        "min_loss_scale": 1
+    }, 
+    "scheduler": {
+        "type": "WarmupDecayLR", 
+        "params": {
+            "warmup_min_lr": 1e-05, 
+            "warmup_max_lr": 0.001, 
+            "warmup_num_steps": 200, 
+            "total_num_steps": 5.000000e+04
+        }
+    }, 
+    "zero_optimization": {
+        "stage": 3, 
+        "offload_optimizer": {
+            "device": "cpu", 
+            "pin_memory": true
+        }, 
+        "offload_param": {
+            "device": "cpu", 
+            "pin_memory": true
+        }, 
+        "overlap_comm": true, 
+        "contiguous_gradients": true, 
+        "sub_group_size": 1.000000e+09, 
+        "reduce_bucket_size": 1.677722e+07, 
+        "stage3_prefetch_bucket_size": 1.509949e+07, 
+        "stage3_param_persistence_threshold": 4.096000e+04, 
+        "stage3_max_live_parameters": 1.000000e+09, 
+        "stage3_max_reuse_distance": 1.000000e+09, 
+        "stage3_gather_16bit_weights_on_model_save": true
+    }, 
+    "gradient_accumulation_steps": 1, 
+    "gradient_clipping": 1.0, 
+    "steps_per_print": inf, 
+    "train_batch_size": 2, 
+    "train_micro_batch_size_per_gpu": 1, 
+    "bf16": {
+        "enabled": false
+    }, 
+    "zero_allow_untested_optimizer": true
+}
+CUDA COUNTS: 3
+CUDA COUNTS: 3
+[2024-04-29 12:47:51,564] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-04-29 12:47:51,652] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+[93m [WARNING] [0m using untested triton version (2.2.0), only 1.0.0 is known to be compatible
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+[93m [WARNING] [0m using untested triton version (2.2.0), only 1.0.0 is known to be compatible
+[2024-04-29 12:47:52,387] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-04-29 12:47:52,387] [INFO] [comm.py:668:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+[2024-04-29 12:47:52,491] [INFO] [comm.py:637:init_distributed] cdb=None
+accelerator device:  cuda:0
+Installed CUDA version 12.3 does not match the version torch was compiled with 12.1 but since the APIs are compatible, accepting this combination
+ninja: no work to do.
+Time to load cpu_adam op: 2.557705879211426 seconds
+Adam Optimizer #0 is created with AVX512 arithmetic capability.
+Config: alpha=0.000010, betas=(0.900000, 0.999000), weight_decay=0.010000, adam_w=1
+[2024-04-29 12:48:06,170] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed info: version=0.14.1, git-hash=unknown, git-branch=unknown
+Installed CUDA version 12.3 does not match the version torch was compiled with 12.1 but since the APIs are compatible, accepting this combination
+ninja: no work to do.
+Time to load cpu_adam op: 2.552471160888672 seconds
+Adam Optimizer #0 is created with AVX512 arithmetic capability.
+Config: alpha=0.000010, betas=(0.900000, 0.999000), weight_decay=0.010000, adam_w=1
+[2024-04-29 12:48:07,538] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2024-04-29 12:48:07,539] [INFO] [logging.py:96:log_dist] [Rank 0] Using client Optimizer as basic optimizer
+[2024-04-29 12:48:07,539] [INFO] [logging.py:96:log_dist] [Rank 0] Removing param_group that has no 'params' in the basic Optimizer
+[2024-04-29 12:48:07,548] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Basic Optimizer = DeepSpeedCPUAdam
+[2024-04-29 12:48:07,548] [INFO] [utils.py:56:is_zero_supported_optimizer] Checking ZeRO support for optimizer=DeepSpeedCPUAdam type=<class 'deepspeed.ops.adam.cpu_adam.DeepSpeedCPUAdam'>
+[2024-04-29 12:48:07,548] [INFO] [logging.py:96:log_dist] [Rank 0] Creating fp16 ZeRO stage 3 optimizer, MiCS is enabled False, Hierarchical params gather False
+[2024-04-29 12:48:07,548] [INFO] [logging.py:96:log_dist] [Rank 0] Creating torch.float16 ZeRO stage 3 optimizer
+[2024-04-29 12:48:07,748] [INFO] [utils.py:772:see_memory_usage] Stage 3 initialize beginning
+[2024-04-29 12:48:07,749] [INFO] [utils.py:773:see_memory_usage] MA 0.21 GB         Max_MA 0.42 GB         CA 0.46 GB         Max_CA 0 GB 
+[2024-04-29 12:48:07,750] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 52.7 GB, percent = 8.4%
+[2024-04-29 12:48:07,751] [INFO] [stage3.py:130:__init__] Reduce bucket size 589824
+[2024-04-29 12:48:07,751] [INFO] [stage3.py:131:__init__] Prefetch bucket size 530841
+[2024-04-29 12:48:07,860] [INFO] [utils.py:772:see_memory_usage] DeepSpeedZeRoOffload initialize [begin]
+[2024-04-29 12:48:07,861] [INFO] [utils.py:773:see_memory_usage] MA 0.21 GB         Max_MA 0.21 GB         CA 0.46 GB         Max_CA 0 GB 
+[2024-04-29 12:48:07,861] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 52.7 GB, percent = 8.4%
+Parameter Offload: Total persistent parameters: 127503 in 128 params
+[2024-04-29 12:48:08,420] [INFO] [utils.py:772:see_memory_usage] DeepSpeedZeRoOffload initialize [end]
+[2024-04-29 12:48:08,421] [INFO] [utils.py:773:see_memory_usage] MA 0.0 GB         Max_MA 0.21 GB         CA 0.46 GB         Max_CA 0 GB 
+[2024-04-29 12:48:08,421] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 53.15 GB, percent = 8.4%
+[2024-04-29 12:48:08,541] [INFO] [utils.py:772:see_memory_usage] Before creating fp16 partitions
+[2024-04-29 12:48:08,542] [INFO] [utils.py:773:see_memory_usage] MA 0.0 GB         Max_MA 0.0 GB         CA 0.46 GB         Max_CA 0 GB 
+[2024-04-29 12:48:08,542] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 53.15 GB, percent = 8.4%
+[2024-04-29 12:48:08,806] [INFO] [utils.py:772:see_memory_usage] After creating fp16 partitions: 1
+[2024-04-29 12:48:08,807] [INFO] [utils.py:773:see_memory_usage] MA 0.0 GB         Max_MA 0.0 GB         CA 0.46 GB         Max_CA 0 GB 
+[2024-04-29 12:48:08,807] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 53.62 GB, percent = 8.5%
+[2024-04-29 12:48:08,925] [INFO] [utils.py:772:see_memory_usage] Before creating fp32 partitions
+[2024-04-29 12:48:08,926] [INFO] [utils.py:773:see_memory_usage] MA 0.0 GB         Max_MA 0.0 GB         CA 0.46 GB         Max_CA 0 GB 
+[2024-04-29 12:48:08,926] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 53.61 GB, percent = 8.5%
+[2024-04-29 12:48:09,260] [INFO] [utils.py:772:see_memory_usage] After creating fp32 partitions
+[2024-04-29 12:48:09,261] [INFO] [utils.py:773:see_memory_usage] MA 0.0 GB         Max_MA 0.0 GB         CA 0.46 GB         Max_CA 0 GB 
+[2024-04-29 12:48:09,261] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 53.8 GB, percent = 8.5%
+[2024-04-29 12:48:09,388] [INFO] [utils.py:772:see_memory_usage] Before initializing optimizer states
+[2024-04-29 12:48:09,389] [INFO] [utils.py:773:see_memory_usage] MA 0.0 GB         Max_MA 0.0 GB         CA 0.46 GB         Max_CA 0 GB 
+[2024-04-29 12:48:09,389] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 54.06 GB, percent = 8.6%
+[2024-04-29 12:48:09,920] [INFO] [utils.py:772:see_memory_usage] After initializing optimizer states
+[2024-04-29 12:48:09,921] [INFO] [utils.py:773:see_memory_usage] MA 0.0 GB         Max_MA 0.0 GB         CA 0.46 GB         Max_CA 0 GB 
+[2024-04-29 12:48:09,921] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 54.29 GB, percent = 8.6%
+[2024-04-29 12:48:09,922] [INFO] [stage3.py:486:_setup_for_real_optimizer] optimizer state initialized
+[2024-04-29 12:48:10,339] [INFO] [utils.py:772:see_memory_usage] After initializing ZeRO optimizer
+[2024-04-29 12:48:10,339] [INFO] [utils.py:773:see_memory_usage] MA 0.0 GB         Max_MA 0.06 GB         CA 0.46 GB         Max_CA 0 GB 
+[2024-04-29 12:48:10,340] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 54.56 GB, percent = 8.7%
+[2024-04-29 12:48:10,340] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Final Optimizer = DeepSpeedCPUAdam
+[2024-04-29 12:48:10,340] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed using configured LR scheduler = WarmupDecayLR
+[2024-04-29 12:48:10,340] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed LR Scheduler = <deepspeed.runtime.lr_schedules.WarmupDecayLR object at 0x7fbeb6680fa0>
+[2024-04-29 12:48:10,340] [INFO] [logging.py:96:log_dist] [Rank 0] step=0, skipped=0, lr=[1e-05], mom=[(0.9, 0.999)]
+[2024-04-29 12:48:10,341] [INFO] [config.py:996:print] DeepSpeedEngine configuration:
+[2024-04-29 12:48:10,341] [INFO] [config.py:1000:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2024-04-29 12:48:10,341] [INFO] [config.py:1000:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2024-04-29 12:48:10,341] [INFO] [config.py:1000:print]   amp_enabled .................. False
+[2024-04-29 12:48:10,341] [INFO] [config.py:1000:print]   amp_params ................... False
+[2024-04-29 12:48:10,342] [INFO] [config.py:1000:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2024-04-29 12:48:10,342] [INFO] [config.py:1000:print]   bfloat16_enabled ............. False
+[2024-04-29 12:48:10,342] [INFO] [config.py:1000:print]   bfloat16_immediate_grad_update  False
+[2024-04-29 12:48:10,342] [INFO] [config.py:1000:print]   checkpoint_parallel_write_pipeline  False
+[2024-04-29 12:48:10,343] [INFO] [config.py:1000:print]   checkpoint_tag_validation_enabled  True
+[2024-04-29 12:48:10,343] [INFO] [config.py:1000:print]   checkpoint_tag_validation_fail  False
+[2024-04-29 12:48:10,343] [INFO] [config.py:1000:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7fbed03639a0>
+[2024-04-29 12:48:10,343] [INFO] [config.py:1000:print]   communication_data_type ...... None
+[2024-04-29 12:48:10,343] [INFO] [config.py:1000:print]   compile_config ............... enabled=False backend='inductor' kwargs={}
+[2024-04-29 12:48:10,343] [INFO] [config.py:1000:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2024-04-29 12:48:10,343] [INFO] [config.py:1000:print]   curriculum_enabled_legacy .... False
+[2024-04-29 12:48:10,343] [INFO] [config.py:1000:print]   curriculum_params_legacy ..... False
+[2024-04-29 12:48:10,343] [INFO] [config.py:1000:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2024-04-29 12:48:10,343] [INFO] [config.py:1000:print]   data_efficiency_enabled ...... False
+[2024-04-29 12:48:10,343] [INFO] [config.py:1000:print]   dataloader_drop_last ......... False
+[2024-04-29 12:48:10,343] [INFO] [config.py:1000:print]   disable_allgather ............ False
+[2024-04-29 12:48:10,343] [INFO] [config.py:1000:print]   dump_state ................... False
+[2024-04-29 12:48:10,343] [INFO] [config.py:1000:print]   dynamic_loss_scale_args ...... {'init_scale': 65536, 'scale_window': 1000, 'delayed_shift': 2, 'consecutive_hysteresis': False, 'min_scale': 1}
+[2024-04-29 12:48:10,343] [INFO] [config.py:1000:print]   eigenvalue_enabled ........... False
+[2024-04-29 12:48:10,343] [INFO] [config.py:1000:print]   eigenvalue_gas_boundary_resolution  1
+[2024-04-29 12:48:10,343] [INFO] [config.py:1000:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2024-04-29 12:48:10,343] [INFO] [config.py:1000:print]   eigenvalue_layer_num ......... 0
+[2024-04-29 12:48:10,344] [INFO] [config.py:1000:print]   eigenvalue_max_iter .......... 100
+[2024-04-29 12:48:10,344] [INFO] [config.py:1000:print]   eigenvalue_stability ......... 1e-06
+[2024-04-29 12:48:10,344] [INFO] [config.py:1000:print]   eigenvalue_tol ............... 0.01
+[2024-04-29 12:48:10,344] [INFO] [config.py:1000:print]   eigenvalue_verbose ........... False
+[2024-04-29 12:48:10,344] [INFO] [config.py:1000:print]   elasticity_enabled ........... False
+[2024-04-29 12:48:10,344] [INFO] [config.py:1000:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "recompute_fwd_factor": 0.0, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2024-04-29 12:48:10,344] [INFO] [config.py:1000:print]   fp16_auto_cast ............... False
+[2024-04-29 12:48:10,344] [INFO] [config.py:1000:print]   fp16_enabled ................. True
+[2024-04-29 12:48:10,344] [INFO] [config.py:1000:print]   fp16_master_weights_and_gradients  False
+[2024-04-29 12:48:10,344] [INFO] [config.py:1000:print]   global_rank .................. 0
+[2024-04-29 12:48:10,344] [INFO] [config.py:1000:print]   grad_accum_dtype ............. None
+[2024-04-29 12:48:10,344] [INFO] [config.py:1000:print]   gradient_accumulation_steps .. 1
+[2024-04-29 12:48:10,344] [INFO] [config.py:1000:print]   gradient_clipping ............ 1.0
+[2024-04-29 12:48:10,344] [INFO] [config.py:1000:print]   gradient_predivide_factor .... 1.0
+[2024-04-29 12:48:10,344] [INFO] [config.py:1000:print]   graph_harvesting ............. False
+[2024-04-29 12:48:10,344] [INFO] [config.py:1000:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2024-04-29 12:48:10,344] [INFO] [config.py:1000:print]   initial_dynamic_scale ........ 65536
+[2024-04-29 12:48:10,344] [INFO] [config.py:1000:print]   load_universal_checkpoint .... False
+[2024-04-29 12:48:10,344] [INFO] [config.py:1000:print]   loss_scale ................... 0
+[2024-04-29 12:48:10,344] [INFO] [config.py:1000:print]   memory_breakdown ............. False
+[2024-04-29 12:48:10,344] [INFO] [config.py:1000:print]   mics_hierarchial_params_gather  False
+[2024-04-29 12:48:10,344] [INFO] [config.py:1000:print]   mics_shard_size .............. -1
+[2024-04-29 12:48:10,344] [INFO] [config.py:1000:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=False
+[2024-04-29 12:48:10,344] [INFO] [config.py:1000:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2024-04-29 12:48:10,344] [INFO] [config.py:1000:print]   optimizer_legacy_fusion ...... False
+[2024-04-29 12:48:10,344] [INFO] [config.py:1000:print]   optimizer_name ............... None
+[2024-04-29 12:48:10,345] [INFO] [config.py:1000:print]   optimizer_params ............. None
+[2024-04-29 12:48:10,345] [INFO] [config.py:1000:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0, 'pipe_partitioned': True, 'grad_partitioned': True}
+[2024-04-29 12:48:10,345] [INFO] [config.py:1000:print]   pld_enabled .................. False
+[2024-04-29 12:48:10,345] [INFO] [config.py:1000:print]   pld_params ................... False
+[2024-04-29 12:48:10,345] [INFO] [config.py:1000:print]   prescale_gradients ........... False
+[2024-04-29 12:48:10,345] [INFO] [config.py:1000:print]   scheduler_name ............... WarmupDecayLR
+[2024-04-29 12:48:10,345] [INFO] [config.py:1000:print]   scheduler_params ............. {'warmup_min_lr': 1e-05, 'warmup_max_lr': 0.001, 'warmup_num_steps': 200, 'total_num_steps': 50000}
+[2024-04-29 12:48:10,345] [INFO] [config.py:1000:print]   seq_parallel_communication_data_type  torch.float32
+[2024-04-29 12:48:10,345] [INFO] [config.py:1000:print]   sparse_attention ............. None
+[2024-04-29 12:48:10,345] [INFO] [config.py:1000:print]   sparse_gradients_enabled ..... False
+[2024-04-29 12:48:10,345] [INFO] [config.py:1000:print]   steps_per_print .............. inf
+[2024-04-29 12:48:10,345] [INFO] [config.py:1000:print]   train_batch_size ............. 2
+[2024-04-29 12:48:10,345] [INFO] [config.py:1000:print]   train_micro_batch_size_per_gpu  1
+[2024-04-29 12:48:10,345] [INFO] [config.py:1000:print]   use_data_before_expert_parallel_  False
+[2024-04-29 12:48:10,345] [INFO] [config.py:1000:print]   use_node_local_storage ....... False
+[2024-04-29 12:48:10,345] [INFO] [config.py:1000:print]   wall_clock_breakdown ......... False
+[2024-04-29 12:48:10,345] [INFO] [config.py:1000:print]   weight_quantization_config ... None
+[2024-04-29 12:48:10,345] [INFO] [config.py:1000:print]   world_size ................... 2
+[2024-04-29 12:48:10,345] [INFO] [config.py:1000:print]   zero_allow_untested_optimizer  True
+[2024-04-29 12:48:10,345] [INFO] [config.py:1000:print]   zero_config .................. stage=3 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=589824 use_multi_rank_bucket_allreduce=True allgather_partitions=True allgather_bucket_size=500,000,000 overlap_comm=True load_from_fp32_weights=True elastic_checkpoint=False offload_param=DeepSpeedZeroOffloadParamConfig(device='cpu', nvme_path=None, buffer_count=5, buffer_size=100,000,000, max_in_cpu=1,000,000,000, pin_memory=True) offload_optimizer=DeepSpeedZeroOffloadOptimizerConfig(device='cpu', nvme_path=None, buffer_count=4, pin_memory=True, pipeline=False, pipeline_read=False, pipeline_write=False, fast_init=False, ratio=1.0) sub_group_size=1000000000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=530841 param_persistence_threshold=7680 model_persistence_threshold=sys.maxsize max_live_parameters=1000000000 max_reuse_distance=1000000000 gather_16bit_weights_on_model_save=True stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_nontrainable_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True pipeline_loading_checkpoint=False override_module_apply=True
+[2024-04-29 12:48:10,345] [INFO] [config.py:1000:print]   zero_enabled ................. True
+[2024-04-29 12:48:10,345] [INFO] [config.py:1000:print]   zero_force_ds_cpu_optimizer .. True
+[2024-04-29 12:48:10,345] [INFO] [config.py:1000:print]   zero_optimization_stage ...... 3
+[2024-04-29 12:48:10,346] [INFO] [config.py:986:print_user_config]   json = {
+    "fp16": {
+        "enabled": true, 
+        "loss_scale": 0, 
+        "loss_scale_window": 1000, 
+        "initial_scale_power": 16, 
+        "hysteresis": 2, 
+        "min_loss_scale": 1
+    }, 
+    "scheduler": {
+        "type": "WarmupDecayLR", 
+        "params": {
+            "warmup_min_lr": 1e-05, 
+            "warmup_max_lr": 0.001, 
+            "warmup_num_steps": 200, 
+            "total_num_steps": 5.000000e+04
+        }
+    }, 
+    "zero_optimization": {
+        "stage": 3, 
+        "offload_optimizer": {
+            "device": "cpu", 
+            "pin_memory": true
+        }, 
+        "offload_param": {
+            "device": "cpu", 
+            "pin_memory": true
+        }, 
+        "overlap_comm": true, 
+        "contiguous_gradients": true, 
+        "sub_group_size": 1.000000e+09, 
+        "reduce_bucket_size": 5.898240e+05, 
+        "stage3_prefetch_bucket_size": 5.308416e+05, 
+        "stage3_param_persistence_threshold": 7.680000e+03, 
+        "stage3_max_live_parameters": 1.000000e+09, 
+        "stage3_max_reuse_distance": 1.000000e+09, 
+        "stage3_gather_16bit_weights_on_model_save": true
+    }, 
+    "gradient_accumulation_steps": 1, 
+    "gradient_clipping": 1.0, 
+    "steps_per_print": inf, 
+    "train_batch_size": 2, 
+    "train_micro_batch_size_per_gpu": 1, 
+    "bf16": {
+        "enabled": false
+    }, 
+    "zero_allow_untested_optimizer": true
+}
+CUDA COUNTS: 3
+CUDA COUNTS: 3
+[2024-04-29 12:48:52,125] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[2024-04-29 12:48:52,296] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+[93m [WARNING] [0m using untested triton version (2.2.0), only 1.0.0 is known to be compatible
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+[93m [WARNING] [0m using untested triton version (2.2.0), only 1.0.0 is known to be compatible
+[2024-04-29 12:48:52,966] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-04-29 12:48:53,140] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-04-29 12:48:53,141] [INFO] [comm.py:668:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+accelerator device:  cuda:0
+Installed CUDA version 12.3 does not match the version torch was compiled with 12.1 but since the APIs are compatible, accepting this combination
+ninja: no work to do.
+Time to load cpu_adam op: 2.5506656169891357 seconds
+Installed CUDA version 12.3 does not match the version torch was compiled with 12.1 but since the APIs are compatible, accepting this combination
+ninja: no work to do.
+Time to load cpu_adam op: 2.5745608806610107 seconds
+Adam Optimizer #0 is created with AVX512 arithmetic capability.
+Config: alpha=0.000010, betas=(0.900000, 0.999000), weight_decay=0.010000, adam_w=1
+Adam Optimizer #0 is created with AVX512 arithmetic capability.
+Config: alpha=0.000010, betas=(0.900000, 0.999000), weight_decay=0.010000, adam_w=1
+[2024-04-29 12:49:15,842] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed info: version=0.14.1, git-hash=unknown, git-branch=unknown
+[2024-04-29 12:49:16,229] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2024-04-29 12:49:16,230] [INFO] [logging.py:96:log_dist] [Rank 0] Using client Optimizer as basic optimizer
+[2024-04-29 12:49:16,230] [INFO] [logging.py:96:log_dist] [Rank 0] Removing param_group that has no 'params' in the basic Optimizer
+[2024-04-29 12:49:16,239] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Basic Optimizer = DeepSpeedCPUAdam
+[2024-04-29 12:49:16,239] [INFO] [utils.py:56:is_zero_supported_optimizer] Checking ZeRO support for optimizer=DeepSpeedCPUAdam type=<class 'deepspeed.ops.adam.cpu_adam.DeepSpeedCPUAdam'>
+[2024-04-29 12:49:16,239] [INFO] [logging.py:96:log_dist] [Rank 0] Creating fp16 ZeRO stage 3 optimizer, MiCS is enabled False, Hierarchical params gather False
+[2024-04-29 12:49:16,239] [INFO] [logging.py:96:log_dist] [Rank 0] Creating torch.float16 ZeRO stage 3 optimizer
+[2024-04-29 12:49:16,430] [INFO] [utils.py:772:see_memory_usage] Stage 3 initialize beginning
+[2024-04-29 12:49:16,431] [INFO] [utils.py:773:see_memory_usage] MA 0.21 GB         Max_MA 0.42 GB         CA 0.46 GB         Max_CA 0 GB 
+[2024-04-29 12:49:16,431] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 52.55 GB, percent = 8.3%
+[2024-04-29 12:49:16,432] [INFO] [stage3.py:130:__init__] Reduce bucket size 589824
+[2024-04-29 12:49:16,432] [INFO] [stage3.py:131:__init__] Prefetch bucket size 530841
+[2024-04-29 12:49:16,549] [INFO] [utils.py:772:see_memory_usage] DeepSpeedZeRoOffload initialize [begin]
+[2024-04-29 12:49:16,550] [INFO] [utils.py:773:see_memory_usage] MA 0.21 GB         Max_MA 0.21 GB         CA 0.46 GB         Max_CA 0 GB 
+[2024-04-29 12:49:16,550] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 52.55 GB, percent = 8.3%
+Parameter Offload: Total persistent parameters: 127503 in 128 params
+[2024-04-29 12:49:17,125] [INFO] [utils.py:772:see_memory_usage] DeepSpeedZeRoOffload initialize [end]
+[2024-04-29 12:49:17,126] [INFO] [utils.py:773:see_memory_usage] MA 0.0 GB         Max_MA 0.21 GB         CA 0.46 GB         Max_CA 0 GB 
+[2024-04-29 12:49:17,126] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 52.99 GB, percent = 8.4%
+[2024-04-29 12:49:17,241] [INFO] [utils.py:772:see_memory_usage] Before creating fp16 partitions
+[2024-04-29 12:49:17,242] [INFO] [utils.py:773:see_memory_usage] MA 0.0 GB         Max_MA 0.0 GB         CA 0.46 GB         Max_CA 0 GB 
+[2024-04-29 12:49:17,242] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 52.99 GB, percent = 8.4%
+[2024-04-29 12:49:17,476] [INFO] [utils.py:772:see_memory_usage] After creating fp16 partitions: 1
+[2024-04-29 12:49:17,477] [INFO] [utils.py:773:see_memory_usage] MA 0.0 GB         Max_MA 0.0 GB         CA 0.46 GB         Max_CA 0 GB 
+[2024-04-29 12:49:17,477] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 53.41 GB, percent = 8.5%
+[2024-04-29 12:49:17,589] [INFO] [utils.py:772:see_memory_usage] Before creating fp32 partitions
+[2024-04-29 12:49:17,590] [INFO] [utils.py:773:see_memory_usage] MA 0.0 GB         Max_MA 0.0 GB         CA 0.46 GB         Max_CA 0 GB 
+[2024-04-29 12:49:17,590] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 53.45 GB, percent = 8.5%
+[2024-04-29 12:49:17,936] [INFO] [utils.py:772:see_memory_usage] After creating fp32 partitions
+[2024-04-29 12:49:17,937] [INFO] [utils.py:773:see_memory_usage] MA 0.0 GB         Max_MA 0.0 GB         CA 0.46 GB         Max_CA 0 GB 
+[2024-04-29 12:49:17,937] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 53.64 GB, percent = 8.5%
+[2024-04-29 12:49:18,054] [INFO] [utils.py:772:see_memory_usage] Before initializing optimizer states
+[2024-04-29 12:49:18,055] [INFO] [utils.py:773:see_memory_usage] MA 0.0 GB         Max_MA 0.0 GB         CA 0.46 GB         Max_CA 0 GB 
+[2024-04-29 12:49:18,055] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 53.85 GB, percent = 8.5%
+[2024-04-29 12:49:18,568] [INFO] [utils.py:772:see_memory_usage] After initializing optimizer states
+[2024-04-29 12:49:18,569] [INFO] [utils.py:773:see_memory_usage] MA 0.0 GB         Max_MA 0.0 GB         CA 0.46 GB         Max_CA 0 GB 
+[2024-04-29 12:49:18,569] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 54.16 GB, percent = 8.6%
+[2024-04-29 12:49:18,569] [INFO] [stage3.py:486:_setup_for_real_optimizer] optimizer state initialized
+[2024-04-29 12:49:18,954] [INFO] [utils.py:772:see_memory_usage] After initializing ZeRO optimizer
+[2024-04-29 12:49:18,955] [INFO] [utils.py:773:see_memory_usage] MA 0.0 GB         Max_MA 0.06 GB         CA 0.46 GB         Max_CA 0 GB 
+[2024-04-29 12:49:18,955] [INFO] [utils.py:780:see_memory_usage] CPU Virtual Memory:  used = 54.44 GB, percent = 8.6%
+[2024-04-29 12:49:18,955] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Final Optimizer = DeepSpeedCPUAdam
+[2024-04-29 12:49:18,956] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed using configured LR scheduler = WarmupDecayLR
+[2024-04-29 12:49:18,956] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed LR Scheduler = <deepspeed.runtime.lr_schedules.WarmupDecayLR object at 0x7fe1901ddfa0>
+[2024-04-29 12:49:18,956] [INFO] [logging.py:96:log_dist] [Rank 0] step=0, skipped=0, lr=[1e-05], mom=[(0.9, 0.999)]
+[2024-04-29 12:49:18,956] [INFO] [config.py:996:print] DeepSpeedEngine configuration:
+[2024-04-29 12:49:18,957] [INFO] [config.py:1000:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2024-04-29 12:49:18,957] [INFO] [config.py:1000:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2024-04-29 12:49:18,957] [INFO] [config.py:1000:print]   amp_enabled .................. False
+[2024-04-29 12:49:18,957] [INFO] [config.py:1000:print]   amp_params ................... False
+[2024-04-29 12:49:18,957] [INFO] [config.py:1000:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2024-04-29 12:49:18,957] [INFO] [config.py:1000:print]   bfloat16_enabled ............. False
+[2024-04-29 12:49:18,957] [INFO] [config.py:1000:print]   bfloat16_immediate_grad_update  False
+[2024-04-29 12:49:18,957] [INFO] [config.py:1000:print]   checkpoint_parallel_write_pipeline  False
+[2024-04-29 12:49:18,957] [INFO] [config.py:1000:print]   checkpoint_tag_validation_enabled  True
+[2024-04-29 12:49:18,957] [INFO] [config.py:1000:print]   checkpoint_tag_validation_fail  False
+[2024-04-29 12:49:18,957] [INFO] [config.py:1000:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7fe1905639d0>
+[2024-04-29 12:49:18,958] [INFO] [config.py:1000:print]   communication_data_type ...... None
+[2024-04-29 12:49:18,958] [INFO] [config.py:1000:print]   compile_config ............... enabled=False backend='inductor' kwargs={}
+[2024-04-29 12:49:18,958] [INFO] [config.py:1000:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2024-04-29 12:49:18,958] [INFO] [config.py:1000:print]   curriculum_enabled_legacy .... False
+[2024-04-29 12:49:18,958] [INFO] [config.py:1000:print]   curriculum_params_legacy ..... False
+[2024-04-29 12:49:18,958] [INFO] [config.py:1000:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2024-04-29 12:49:18,958] [INFO] [config.py:1000:print]   data_efficiency_enabled ...... False
+[2024-04-29 12:49:18,958] [INFO] [config.py:1000:print]   dataloader_drop_last ......... False
+[2024-04-29 12:49:18,958] [INFO] [config.py:1000:print]   disable_allgather ............ False
+[2024-04-29 12:49:18,958] [INFO] [config.py:1000:print]   dump_state ................... False
+[2024-04-29 12:49:18,958] [INFO] [config.py:1000:print]   dynamic_loss_scale_args ...... {'init_scale': 65536, 'scale_window': 1000, 'delayed_shift': 2, 'consecutive_hysteresis': False, 'min_scale': 1}
+[2024-04-29 12:49:18,958] [INFO] [config.py:1000:print]   eigenvalue_enabled ........... False
+[2024-04-29 12:49:18,958] [INFO] [config.py:1000:print]   eigenvalue_gas_boundary_resolution  1
+[2024-04-29 12:49:18,958] [INFO] [config.py:1000:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2024-04-29 12:49:18,958] [INFO] [config.py:1000:print]   eigenvalue_layer_num ......... 0
+[2024-04-29 12:49:18,958] [INFO] [config.py:1000:print]   eigenvalue_max_iter .......... 100
+[2024-04-29 12:49:18,958] [INFO] [config.py:1000:print]   eigenvalue_stability ......... 1e-06
+[2024-04-29 12:49:18,958] [INFO] [config.py:1000:print]   eigenvalue_tol ............... 0.01
+[2024-04-29 12:49:18,958] [INFO] [config.py:1000:print]   eigenvalue_verbose ........... False
+[2024-04-29 12:49:18,958] [INFO] [config.py:1000:print]   elasticity_enabled ........... False
+[2024-04-29 12:49:18,958] [INFO] [config.py:1000:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "recompute_fwd_factor": 0.0, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2024-04-29 12:49:18,958] [INFO] [config.py:1000:print]   fp16_auto_cast ............... False
+[2024-04-29 12:49:18,958] [INFO] [config.py:1000:print]   fp16_enabled ................. True
+[2024-04-29 12:49:18,958] [INFO] [config.py:1000:print]   fp16_master_weights_and_gradients  False
+[2024-04-29 12:49:18,959] [INFO] [config.py:1000:print]   global_rank .................. 0
+[2024-04-29 12:49:18,959] [INFO] [config.py:1000:print]   grad_accum_dtype ............. None
+[2024-04-29 12:49:18,959] [INFO] [config.py:1000:print]   gradient_accumulation_steps .. 1
+[2024-04-29 12:49:18,959] [INFO] [config.py:1000:print]   gradient_clipping ............ 1.0
+[2024-04-29 12:49:18,959] [INFO] [config.py:1000:print]   gradient_predivide_factor .... 1.0
+[2024-04-29 12:49:18,959] [INFO] [config.py:1000:print]   graph_harvesting ............. False
+[2024-04-29 12:49:18,959] [INFO] [config.py:1000:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2024-04-29 12:49:18,959] [INFO] [config.py:1000:print]   initial_dynamic_scale ........ 65536
+[2024-04-29 12:49:18,959] [INFO] [config.py:1000:print]   load_universal_checkpoint .... False
+[2024-04-29 12:49:18,959] [INFO] [config.py:1000:print]   loss_scale ................... 0
+[2024-04-29 12:49:18,959] [INFO] [config.py:1000:print]   memory_breakdown ............. False
+[2024-04-29 12:49:18,959] [INFO] [config.py:1000:print]   mics_hierarchial_params_gather  False
+[2024-04-29 12:49:18,959] [INFO] [config.py:1000:print]   mics_shard_size .............. -1
+[2024-04-29 12:49:18,959] [INFO] [config.py:1000:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=False
+[2024-04-29 12:49:18,959] [INFO] [config.py:1000:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2024-04-29 12:49:18,959] [INFO] [config.py:1000:print]   optimizer_legacy_fusion ...... False
+[2024-04-29 12:49:18,959] [INFO] [config.py:1000:print]   optimizer_name ............... None
+[2024-04-29 12:49:18,959] [INFO] [config.py:1000:print]   optimizer_params ............. None
+[2024-04-29 12:49:18,959] [INFO] [config.py:1000:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0, 'pipe_partitioned': True, 'grad_partitioned': True}
+[2024-04-29 12:49:18,959] [INFO] [config.py:1000:print]   pld_enabled .................. False
+[2024-04-29 12:49:18,959] [INFO] [config.py:1000:print]   pld_params ................... False
+[2024-04-29 12:49:18,959] [INFO] [config.py:1000:print]   prescale_gradients ........... False
+[2024-04-29 12:49:18,959] [INFO] [config.py:1000:print]   scheduler_name ............... WarmupDecayLR
+[2024-04-29 12:49:18,959] [INFO] [config.py:1000:print]   scheduler_params ............. {'warmup_min_lr': 1e-05, 'warmup_max_lr': 0.001, 'warmup_num_steps': 200, 'total_num_steps': 50000}
+[2024-04-29 12:49:18,959] [INFO] [config.py:1000:print]   seq_parallel_communication_data_type  torch.float32
+[2024-04-29 12:49:18,959] [INFO] [config.py:1000:print]   sparse_attention ............. None
+[2024-04-29 12:49:18,959] [INFO] [config.py:1000:print]   sparse_gradients_enabled ..... False
+[2024-04-29 12:49:18,959] [INFO] [config.py:1000:print]   steps_per_print .............. inf
+[2024-04-29 12:49:18,959] [INFO] [config.py:1000:print]   train_batch_size ............. 2
+[2024-04-29 12:49:18,960] [INFO] [config.py:1000:print]   train_micro_batch_size_per_gpu  1
+[2024-04-29 12:49:18,960] [INFO] [config.py:1000:print]   use_data_before_expert_parallel_  False
+[2024-04-29 12:49:18,960] [INFO] [config.py:1000:print]   use_node_local_storage ....... False
+[2024-04-29 12:49:18,960] [INFO] [config.py:1000:print]   wall_clock_breakdown ......... False
+[2024-04-29 12:49:18,960] [INFO] [config.py:1000:print]   weight_quantization_config ... None
+[2024-04-29 12:49:18,960] [INFO] [config.py:1000:print]   world_size ................... 2
+[2024-04-29 12:49:18,960] [INFO] [config.py:1000:print]   zero_allow_untested_optimizer  True
+[2024-04-29 12:49:18,960] [INFO] [config.py:1000:print]   zero_config .................. stage=3 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=589824 use_multi_rank_bucket_allreduce=True allgather_partitions=True allgather_bucket_size=500,000,000 overlap_comm=True load_from_fp32_weights=True elastic_checkpoint=False offload_param=DeepSpeedZeroOffloadParamConfig(device='cpu', nvme_path=None, buffer_count=5, buffer_size=100,000,000, max_in_cpu=1,000,000,000, pin_memory=True) offload_optimizer=DeepSpeedZeroOffloadOptimizerConfig(device='cpu', nvme_path=None, buffer_count=4, pin_memory=True, pipeline=False, pipeline_read=False, pipeline_write=False, fast_init=False, ratio=1.0) sub_group_size=1000000000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=530841 param_persistence_threshold=7680 model_persistence_threshold=sys.maxsize max_live_parameters=1000000000 max_reuse_distance=1000000000 gather_16bit_weights_on_model_save=True stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_nontrainable_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True pipeline_loading_checkpoint=False override_module_apply=True
+[2024-04-29 12:49:18,960] [INFO] [config.py:1000:print]   zero_enabled ................. True
+[2024-04-29 12:49:18,960] [INFO] [config.py:1000:print]   zero_force_ds_cpu_optimizer .. True
+[2024-04-29 12:49:18,960] [INFO] [config.py:1000:print]   zero_optimization_stage ...... 3
+[2024-04-29 12:49:18,960] [INFO] [config.py:986:print_user_config]   json = {
+    "fp16": {
+        "enabled": true, 
+        "loss_scale": 0, 
+        "loss_scale_window": 1000, 
+        "initial_scale_power": 16, 
+        "hysteresis": 2, 
+        "min_loss_scale": 1
+    }, 
+    "scheduler": {
+        "type": "WarmupDecayLR", 
+        "params": {
+            "warmup_min_lr": 1e-05, 
+            "warmup_max_lr": 0.001, 
+            "warmup_num_steps": 200, 
+            "total_num_steps": 5.000000e+04
+        }
+    }, 
+    "zero_optimization": {
+        "stage": 3, 
+        "offload_optimizer": {
+            "device": "cpu", 
+            "pin_memory": true
+        }, 
+        "offload_param": {
+            "device": "cpu", 
+            "pin_memory": true
+        }, 
+        "overlap_comm": true, 
+        "contiguous_gradients": true, 
+        "sub_group_size": 1.000000e+09, 
+        "reduce_bucket_size": 5.898240e+05, 
+        "stage3_prefetch_bucket_size": 5.308416e+05, 
+        "stage3_param_persistence_threshold": 7.680000e+03, 
+        "stage3_max_live_parameters": 1.000000e+09, 
+        "stage3_max_reuse_distance": 1.000000e+09, 
+        "stage3_gather_16bit_weights_on_model_save": true
+    }, 
+    "gradient_accumulation_steps": 1, 
+    "gradient_clipping": 1.0, 
+    "steps_per_print": inf, 
+    "train_batch_size": 2, 
+    "train_micro_batch_size_per_gpu": 1, 
+    "bf16": {
+        "enabled": false
+    }, 
+    "zero_allow_untested_optimizer": true
+}
+[2024-04-29 12:49:27,719] [INFO] [loss_scaler.py:190:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 65536, but hysteresis is 2. Reducing hysteresis to 1
+[2024-04-29 12:50:00,950] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 65536, reducing to 32768
+CUDA COUNTS: 3
+CUDA COUNTS: 3
+[2024-04-29 12:54:09,679] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-04-29 12:54:09,679] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+[93m [WARNING] [0m using untested triton version (2.2.0), only 1.0.0 is known to be compatible
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+[93m [WARNING] [0m using untested triton version (2.2.0), only 1.0.0 is known to be compatible
+[2024-04-29 12:54:10,546] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-04-29 12:54:10,547] [INFO] [comm.py:668:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+[2024-04-29 12:54:10,548] [INFO] [comm.py:637:init_distributed] cdb=None
+accelerator device:  cuda:0

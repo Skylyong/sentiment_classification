@@ -51,7 +51,7 @@ assert len(LABEL_SET) == 15
 def parse_args():
     parser = argparse.ArgumentParser(description='Train a model')
     
-    parser.add_argument('--data_path', type=str, default='./DATA_SET/data_processed_normalized.npy', help='Path to the data')
+    parser.add_argument('--data_path', type=str, default='./DATA_SET/data_processed_normalized_total.npy', help='Path to the data')
     parser.add_argument('--model_path', type=str, default='models/', help='Path to save the model')
     # parser.add_argument('--model_name', type=str, default='model', help='Name of the model')
     
@@ -68,7 +68,8 @@ def parse_args():
     parser.add_argument('--label_set', type=list, default=LABEL_SET, help='Set of labels')
         
     parser.add_argument('--max_audio_length', type=int, default=53, help='Max audio length max length: 53')
-    parser.add_argument('--max_length', type=int, default=1024, help='')
+    parser.add_argument('--max_length', type=int, default=1000, help='Max length of one page text') # 80000 
+    parser.add_argument('--max_seg_text_length', type=int, default=1000, help='Max segment text length')
     
     # parser.add_argument("--cache_dir",type=str,default='./cache',help='cache dir')
     # parser.add_argument("--refresh_token",action='store_true',help='refresh token')
@@ -78,13 +79,13 @@ def parse_args():
 
     parser.add_argument('--pretrained_models_dir', type=str, default='pretrained_models', help='pretrained models dir')
     
-    parser.add_argument('--text_embedding_dim', type=int, default=768, help='Text embedding dimension')
+    parser.add_argument('--text_embedding_dim', type=int, default=4096, help='Text embedding dimension')
     parser.add_argument('--audio_embedding_dim', type=int, default=768, help='Audio embedding dimension')
    
     parser.add_argument('--att_dropout', type=float, default=0.3, help='Attention dropout') 
     parser.add_argument('--fusion_pooling_type', type=str, default='max', choices=['mean', 'max'], help='Fusion pooling type')
      
-    parser.add_argument('--num_workers', type=int, default=32, help='Number of workers')
+    parser.add_argument('--num_workers', type=int, default=4, help='Number of workers')
    
    
     parser.add_argument('--emotion_map_dict', type=dict, default={
@@ -105,6 +106,8 @@ def parse_args():
         "Excited":1
         
         }, help='map emotion class to scores')
+    
+    parser.add_argument('--predict_model_path', type=str, default='/data/User_Hannah/temp/sentiment_classification/models/model.pth', help='Path to the predict model')
     
     args = parser.parse_args()
     return args

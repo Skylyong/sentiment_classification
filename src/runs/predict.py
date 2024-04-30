@@ -13,22 +13,24 @@ import json
 import pandas as pd
 
 
+
 def predict(model, dataloader, accelerator, args):
     model.eval()
 
     predicts = []
     y_trues = []
     with torch.no_grad():
-        for i, data in enumerate(dataloader):
+        for i, data in tqdm( enumerate(dataloader)):
 
             text = data['text']
             audio = {'audio_embedding':data['audio_embedding'], 'audio_padded_type':data['audio_padded_type']}
+           
             label = data['label']
-            
-            text = {key: value.to(accelerator.device) for key, value in text.items()}
-            audio = {key: value.to(accelerator.device) for key, value in audio.items()}
             label = label.to(accelerator.device)
-
+           
+            # text = {key: value.to(accelerator.device) for key, value in text.items()}
+            audio = {key: value.to(accelerator.device) for key, value in audio.items()}
+            
             
             # label = label.to("cuda:0")
             
@@ -40,6 +42,11 @@ def predict(model, dataloader, accelerator, args):
             y_trues.append(label)
             
             predicts.append(pred)
+            
+            # 在这里用tqdm显示处理进度
+            
+            
+            
         # outputs > 0.5 = 1 else 0
         predicts = np.concatenate(predicts, axis=0)
         y_trues = np.concatenate(y_trues, axis=0)
@@ -51,6 +58,8 @@ def predict(model, dataloader, accelerator, args):
 
 
 def find_threshold_micro(dev_yhat_raw, dev_y):
+    if np.sum(dev_yhat_raw) ==0:
+        return 0
     dev_yhat_raw_1 = dev_yhat_raw.reshape(-1)
     dev_y_1 = dev_y.reshape(-1)
     sort_arg = np.argsort(dev_yhat_raw_1)
@@ -76,6 +85,7 @@ def map_class_to_scores(predicts, y_tures, idx_to_emotion, emotion_map_dict):
     }
     threshold = find_threshold_micro(y_tures.reshape(-1,1), predicts.reshape(-1,1))
     threshold = threshold if threshold != 1 else 0
+    # threshold = 0
     print(f'threshold: {threshold}')
     
     for i in range(len(predicts)):
@@ -93,7 +103,7 @@ def map_class_to_scores(predicts, y_tures, idx_to_emotion, emotion_map_dict):
 
 def main():
     
-    kwargs_handlers = [DistributedDataParallelKwargs()]
+    kwargs_handlers = [DistributedDataParallelKwargs(find_unused_parameters=True)]
 
     accelerator = Accelerator(
         kwargs_handlers=kwargs_handlers,
@@ -108,16 +118,19 @@ def main():
     # device = torch.device(args.device if torch.cuda.is_available() and 'cuda' in  args.device else 'cpu')
     # print(device)
     
-    model = text_audio_sentiment_classify(args).to(accelerator.device) .to(torch.float16).to(accelerator.device)
+    model = text_audio_sentiment_classify(args, accelerator.device)
     
+    # 加载权重
+    model.load_state_dict(torch.load(args.predict_model_path))
     
-    
+    model = model.to(torch.float16).to(accelerator.device)
     data = np.load(args.data_path, allow_pickle=True).item()
     
     if 'intern' in args.bert_model_path:
         tokenizer = AutoTokenizer.from_pretrained(args.bert_model_path,
                                                     cache_dir=args.pretrained_models_dir,
                                                     trust_remote_code=True,
+                                                    padding_side = 'right',
                                                   )
     else:
         tokenizer = BertTokenizer.from_pretrained(args.bert_model_path, 
@@ -127,6 +140,7 @@ def main():
     train_data = CustomDataset(data['train'], args, tokenizer, version='train')
     val_data = CustomDataset(data['val'], args, tokenizer, version='val')
     test_data = CustomDataset(data['test'], args, tokenizer, version='test')
+    pred_data = CustomDataset(data['pred'], args, tokenizer, version='pred')
     
     train_dataloader = DataLoader(train_data, batch_size=args.train_batch_size, shuffle=True, collate_fn=my_collate_fn, num_workers=args.num_workers)
     
@@ -134,10 +148,17 @@ def main():
     
     test_dataloader = DataLoader(test_data, batch_size=args.val_batch_size, shuffle=False, collate_fn=my_collate_fn, num_workers=args.num_workers)
     
-    model, train_dataloader, val_dataloader,test_dataloader = accelerator.prepare(model, train_dataloader, val_dataloader, test_dataloader)
+    pred_dataloader = DataLoader(pred_data, batch_size=args.val_batch_size, shuffle=False, collate_fn=my_collate_fn, num_workers=args.num_workers)
+    
+    model, train_dataloader, val_dataloader,test_dataloader, pred_dataloader = accelerator.prepare(model, 
+                                                                                                   train_dataloader, 
+                                                                                                   val_dataloader, 
+                                                                                                   test_dataloader,
+                                                                                                   pred_dataloader)
     
     total_df = pd.DataFrame()
-    for data_set, dataloader in [(train_data,train_dataloader), (test_data, test_dataloader),(val_data, val_dataloader)]: # 
+    for data_set, dataloader in tqdm([ (pred_data, pred_dataloader), (train_data,train_dataloader), (test_data, test_dataloader),(val_data, val_dataloader)]): # 
+    # for data_set, dataloader in tqdm([ (pred_data, pred_dataloader)]):
         
         predicts, y_trues = predict(model, dataloader, accelerator, args)
         
@@ -147,7 +168,10 @@ def main():
         
         res_write_to_json = []
         for i in range(len(scores)):
-            audio = data_set.data[i]['audio_embedding'].item()
+            try:
+                audio = data_set.data[i]['audio_embedding'].item()
+            except:
+                audio = data_set.data[i]['audio_embedding']
             idx = audio['file_name'].split('/')[-1].split('.')[0]
             tmp = {
                 'id': idx,
@@ -162,6 +186,7 @@ def main():
        
         df = pd.DataFrame(res_write_to_json)
         total_df = pd.concat([total_df, df], axis=0)
+        # break
         
     total_df.to_excel('predict_results.xlsx', index=None)
     print(' predict_results.xlsx has been saved!') 
